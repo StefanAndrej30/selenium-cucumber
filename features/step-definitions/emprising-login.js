@@ -1,27 +1,26 @@
-const {When, Then, Given, BeforeAll, AfterAll} = require('@cucumber/cucumber')
-const {expect} = require('chai');
-const {By, Builder, Key} = require('selenium-webdriver');
-const loginPage = require('../pageObject/emprising-login.page');
-//  const { getDriver } = require('../pageObject/base.page');
-//  const browser = getDriver();
+/* eslint-disable new-cap */
+const {Then, Given, When} = require('@cucumber/cucumber');
+const {By} = require('selenium-webdriver');
+const loginPage = require('../page-object/emprising-login.page');
+const clientListPage = require('../page-object/client-list.page');
+const { browser } = require('../support/getBrowser');
+const { httpConfig } = require('../commons/httpConfig');
+const {takeScreenshot} = require('../commons/action');
+const { expect } = require('chai');
 
-// Given('Testing vanila selenium', async function () {
-//   await this.browser.get('https://www.google.com/');
-//   await testPage.getField();
-//   expect(await this.browser.getCurrentUrl()).to.contain('Wikipediag');
-//   this.browser.quit();
-// });
+Given('I am on emprising page', async function() {
+  await loginPage.open(httpConfig.baseUrl);
+});
 
-
-When('I login with username and password {string} {string} as {string}', function (user, pass, typeOfUser) {
+When('I login with username and password {string} {string} as {string}', async function (user, pass, typeOfUser) {
   switch (typeOfUser) {
     case 'CLIENT':
       loginPage.loginAsClient(user, pass);
       fourBoxDashboard.waitFor4BoxDashboardToLoad();
       break;
     case 'GPTWUSER':
-      loginPage.loginAsGptwUser(user, pass);
-      clientListPage.waitForClientList();
+      await loginPage.loginAsGptwUser(user, pass);
+     await clientListPage.waitForClientList();
       break;
     default:
       loginPage.loginAsClient(user, pass);
@@ -29,9 +28,3 @@ When('I login with username and password {string} {string} as {string}', functio
       break;
   }
 });
-
-Given('Login as gptw user {string} {string}', async function (user, pass) {
-  await this.browser.get('https://qa-cmp.greatplacetowork.com/');
-  await loginPage.loginAsGptwUser(user, pass);
-});
-

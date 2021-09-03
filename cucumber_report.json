@@ -1,0 +1,54 @@
+[
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "test;testing",
+        "keyword": "Scenario",
+        "line": 4,
+        "name": "Testing",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 417000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 5,
+            "name": "I login with username and password \"stefan.marjanovic@greatplacetowork.com\" \"scKqtwsyCr4VC3q..\" as \"GPTWUSER\"",
+            "match": {
+              "location": "features/step-definitions/emprising-login.js:7"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 11644000000,
+              "error_message": "ElementNotInteractableError: element not interactable\n  (Session info: chrome=91.0.4472.77)\n    at Object.throwDecodedError (/home/andrej/projects/selenium-cucumber/node_modules/selenium-webdriver/lib/error.js:517:15)\n    at parseHttpResponse (/home/andrej/projects/selenium-cucumber/node_modules/selenium-webdriver/lib/http.js:642:13)\n    at Executor.execute (/home/andrej/projects/selenium-cucumber/node_modules/selenium-webdriver/lib/http.js:568:28)\n    at processTicksAndRejections (internal/process/task_queues.js:97:5)\n    at async thenableWebDriverProxy.execute (/home/andrej/projects/selenium-cucumber/node_modules/selenium-webdriver/lib/webdriver.js:731:17)\n    at async LoginPage.loginAsGptwUser (/home/andrej/projects/selenium-cucumber/features/page-object/emprising-login.page.js:77:3)\n    at async World.<anonymous> (/home/andrej/projects/selenium-cucumber/features/step-definitions/emprising-login.js:15:7)"
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 59000000
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "test",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Test",
+    "tags": [],
+    "uri": "features/demo.feature"
+  }
+]

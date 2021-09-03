@@ -1,5 +1,5 @@
 const seleniumWebdriver = require('selenium-webdriver');
-const { browserName} = require('../../.vscode/config');
+const { browserName} = require('../commons/config');
 
 exports.getDriver = () => {
     browser = new seleniumWebdriver

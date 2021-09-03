@@ -1,21 +1,10 @@
 const seleniumWebdriver = require('selenium-webdriver');
-const {setWorldConstructor, setDefaultTimeout} = require('@cucumber/cucumber');
-const {timeout, browserName} = require('../../.vscode/config');
+require('chromedriver');
+const {defineSupportCode} = require('@cucumber/cucumber');
+const { setWorldConstructor, World, setDefaultTimeout } = require('@cucumber/cucumber')
+const {timeout, browserName} = require('../commons/config');
 
-class CustomWorld {
-  constructor() {
 
-    this.browser = new seleniumWebdriver
-      .Builder()
-      .forBrowser(browserName)
-      .build();
-  }
-
-  getBrowser = () => {
-    return this.browser;
-  }
-  
-}
 
 setDefaultTimeout(timeout);
-setWorldConstructor(CustomWorld);
+

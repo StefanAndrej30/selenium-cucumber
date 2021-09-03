@@ -4,17 +4,35 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "node_modules/.bin/cucumber-js -f @cucumber/pretty-formatter features/demo.feature"
+    "test": "node features/commons/httpConfig.js --env=$ENV | node_modules/.bin/cucumber-js --tags=$TAGS -f @cucumber/pretty-formatter features/*",
+    "testR": "node_modules/.bin/cucumber-js --format=json:cucumber_report.json -f @cucumber/pretty-formatter features/demo.feature && node index.js",
+    "testBrowser": "node features/support/getBrowser.js --browsers=$BROWSER"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "concurrently": "^6.2.0",
+    "cucumberjs-chromedriver": "^0.3.1",
+    "geckodriver": "^2.0.1",
+    "moment": "^2.29.1",
+    "sinon-chai": "^3.7.0",
+    "yargs": "^17.0.1"
+  },
   "devDependencies": {
     "@cucumber/cucumber": "^7.3.0",
     "@cucumber/pretty-formatter": "^1.0.0-alpha.1",
     "chai": "^4.3.4",
     "chromedriver": "^91.0.1",
+    "cucumber-html-reporter": "^5.4.0",
+    "eslint": "^7.30.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-config-xo": "^0.37.0",
+    "eslint-plugin-cucumber": "^1.4.0",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.1.0",
+    "eslint-plugin-wdio": "^7.4.2",
     "selenium-webdriver": "^4.0.0-beta.4"
   }
 }
