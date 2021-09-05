@@ -1,5 +1,6 @@
 const { browser } = require('../support/getBrowser');
-const fs = require('fs');
+const fs = require('fs-extra');
+const fsExtra = require('fs-extra')
 const path = require('path');
 const Globals = require('../support/globals')
 
@@ -10,5 +11,10 @@ async function takeScreenshot(){
     });
   }
 
+async function deleteFiles(folder) {
 
-module.exports = {takeScreenshot};
+await fsExtra.emptyDirSync(path.join(__dirname,`../../${folder}`));
+}
+
+
+module.exports = {takeScreenshot, deleteFiles};

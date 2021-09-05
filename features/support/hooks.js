@@ -1,10 +1,11 @@
 const {Before, After, AfterAll, Status} = require('@cucumber/cucumber');
 const { browser } = require('../support/getBrowser')
 const { clearFile }  = require('../commons/environment-setup');
-const {takeScreenshot} = require('../commons/action');
+const {takeScreenshot, deleteFiles} = require('../commons/action');
 
 Before(function() {
   clearFile();
+  deleteFiles('screenshots');
   return browser.manage().window().maximize();
 });
 
