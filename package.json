@@ -16,6 +16,7 @@
     "fs-extra": "^10.0.0",
     "geckodriver": "^2.0.1",
     "moment": "^2.29.1",
+    "selenium-standalone": "^7.1.0",
     "sinon-chai": "^3.7.0",
     "yargs": "^17.0.1"
   },
