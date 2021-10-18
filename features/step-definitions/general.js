@@ -1,4 +1,4 @@
-const { When, Then } = require('@cucumber/cucumber');
+const { Then } = require('@cucumber/cucumber');
 const { browser } = require('../support/getBrowser');
 const { expect } = require('chai');
 

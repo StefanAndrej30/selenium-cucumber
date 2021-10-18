@@ -1,9 +1,7 @@
 
 const {browser} = require('../support/getBrowser');
-//browser.manage().setTimeouts( { implicit: 10000 } );
 const waits  = require('../commons/browser')
-//waits.waitForScript();
-const {By, until} = require('selenium-webdriver');
+const { By } = require('selenium-webdriver');
 class LoginPage {
 	/**
     * Define elements

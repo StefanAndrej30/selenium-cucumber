@@ -1,9 +1,6 @@
-const {By, until, ExpectedConditions,wait  } = require('selenium-webdriver');
-const { seleniumWebdriver } = require('selenium-webdriver');
+const {By, until } = require('selenium-webdriver');
 const {timeout} = require('./config');
 const {browser} = require('../support/getBrowser');
-const { expect } = require('chai');
-
 
 class Waits {
 

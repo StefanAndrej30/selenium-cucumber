@@ -1,5 +1,5 @@
-const {Then, Given, When} = require('@cucumber/cucumber');
-const {By, until, ExpectedConditions,wait  } = require('selenium-webdriver');
+const { Given, When} = require('@cucumber/cucumber');
+const { By } = require('selenium-webdriver');
 const { browser } = require('../support/getBrowser');
 const waits = require('../commons/browser')
 const fourthStepPage = require('../page-object/fourth-step-page');

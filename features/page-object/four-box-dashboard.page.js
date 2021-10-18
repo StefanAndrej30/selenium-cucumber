@@ -1,7 +1,5 @@
-const {browser} = require('../support/getBrowser');
 const waits  = require('../commons/browser')
-//waits.waitForScript();
-const {By, until} = require('selenium-webdriver');
+const { By } = require('selenium-webdriver');
 
 class fourBoxDashboard {
 

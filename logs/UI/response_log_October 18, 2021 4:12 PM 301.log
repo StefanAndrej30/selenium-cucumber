@@ -1,0 +1,8 @@
+[2021-10-18T16:13:06.044] [TRACE] cheese - {
+  duration: { seconds: 0, nanos: 8000000 },
+  status: 'FAILED',
+  message: "AssertionError: expected 'https://dev-cmp.greatplacetowork.com/dashboardUser' to include '/dashboardUsers'\n" +
+    '    at World.<anonymous> (/home/andrej/selenium-cucumber/features/step-definitions/general.js:6:46)\n' +
+    '    at processTicksAndRejections (internal/process/task_queues.js:94:5)',
+  willBeRetried: false
+}

@@ -1,15 +1,12 @@
 /* eslint-disable new-cap */
-const {Then, Given, When} = require('@cucumber/cucumber');
-const {By} = require('selenium-webdriver');
+const { Given, When} = require('@cucumber/cucumber');
 const loginPage = require('../page-object/emprising-login.page');
 const clientListPage = require('../page-object/client-list.page');
-const { browser } = require('../support/getBrowser');
 const { httpConfig } = require('../commons/httpConfig');
-const {takeScreenshot} = require('../commons/action');
-const { expect } = require('chai');
+
 
 Given('I am on emprising page', async function() {
-  await loginPage.open(httpConfig.baseUrl);
+   await loginPage.open(httpConfig.baseUrl);
 });
 
 When('I login with username and password {string} {string} as {string}', async function (user, pass, typeOfUser) {

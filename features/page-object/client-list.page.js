@@ -1,5 +1,5 @@
 const { browser } = require('../support/getBrowser');
-const {By, until, Key} = require('selenium-webdriver');
+const { By } = require('selenium-webdriver');
 const waits = require('../commons/browser');
 
 class ClientListPage{

@@ -1,10 +1,6 @@
 /* eslint-disable new-cap */
-const {Then, Given, When} = require('@cucumber/cucumber');
-const {By} = require('selenium-webdriver');
-const loginPage = require('../page-object/emprising-login.page');
+const { Then } = require('@cucumber/cucumber');
 const clientListPage = require('../page-object/client-list.page');
-const { browser } = require('../support/getBrowser');
-const waits  = require('../commons/browser')
 const fourBoxDashboard = require('../page-object/four-box-dashboard.page');
 
 
