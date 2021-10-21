@@ -1,4 +1,4 @@
-const {Before, After, AfterAll, Status} = require('@cucumber/cucumber');
+const {Before, After, Status} = require('@cucumber/cucumber');
 const { browser } = require('../support/getBrowser')
 const { clearFile }  = require('../commons/environment-setup');
 const {takeScreenshot, deleteFiles} = require('../commons/action');

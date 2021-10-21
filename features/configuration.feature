@@ -5,7 +5,7 @@ Feature: Configuration test
     Scenario: Upload certification file and expect to not be able to confirm it
         Given I am on emprising page
         When I login with username and password "stefan.marjanovic@greatplacetowork.com" "scKqtwsyCr4VC3q..10" as "GPTWUSER"
-        Then I expect that url contain "/dashboardUser"
+        Then I expect that url contain "/dashboardUsers"
         And I select "Germany" affiliate
         And I search for "53535" clientId and click on it
         And I click create survey button
