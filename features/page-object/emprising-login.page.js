@@ -1,6 +1,6 @@
 
 const {browser} = require('../support/getBrowser');
-const waits  = require('../commons/browser')
+const waits = require('../commons/waits');
 const { By } = require('selenium-webdriver');
 class LoginPage {
 	/**

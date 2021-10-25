@@ -1,10 +1,11 @@
-const waits  = require('../commons/browser')
+const waits = require('../commons/waits');
 const { By } = require('selenium-webdriver');
+const { browser } = require('../support/getBrowser');
 
 class fourBoxDashboard {
 
 get createSurveyButton() { return By.xpath('//*[@ng-click="vm.goCreateSurvey()"]') }
-clickCertificationSurvey(typeoFSurvey) {return By.xpath(`//button[normalize-space()="${typeoFSurvey}"]`)  }
+set clickCertificationSurvey(typeoFSurvey) {return By.xpath(`//button[normalize-space()="${typeoFSurvey}"]`)  }
 
 
 async clickCreateSurveyButton() {
@@ -12,7 +13,8 @@ async clickCreateSurveyButton() {
 }
 
 async clickSurvey(typeoFSurvey) {
-    await waits.clickElem(this.clickCertificationSurvey(typeoFSurvey));
+    await waits.WaitForElem(By.xpath(`//button[normalize-space()='${typeoFSurvey}']`));
+   await browser.findElement(By.xpath(`//button[normalize-space()='${typeoFSurvey}']`)).click();
 }
 
 }

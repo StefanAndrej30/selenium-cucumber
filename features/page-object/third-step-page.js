@@ -1,4 +1,4 @@
-const waits  = require('../commons/browser')
+const waits = require('../commons/waits');
 const { By } = require('selenium-webdriver');
 
 

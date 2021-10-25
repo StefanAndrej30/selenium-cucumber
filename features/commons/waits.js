@@ -54,8 +54,8 @@ class Waits {
 		let retries = 10;
 		try {
 		  const element = await browser.findElement(locator)
-		  await browser.executeScript("arguments[0].click();", element);
-		  //await element.click();
+		  //await browser.executeScript("arguments[0].click();", element);
+		  await element.click();
 		} catch (err) {
 		  if (retries === 0) {
 			throw new Error(`Still not able to click ${locator.toString()} after maximum retries, Error message: ${err.message.toString()}`)

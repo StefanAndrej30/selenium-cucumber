@@ -1,6 +1,6 @@
 const { browser } = require('../support/getBrowser');
 const { By } = require('selenium-webdriver');
-const waits = require('../commons/browser');
+const waits = require('../commons/waits');
 
 class ClientListPage{
 

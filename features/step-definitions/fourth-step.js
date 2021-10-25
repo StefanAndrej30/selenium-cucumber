@@ -1,7 +1,7 @@
 const { Given, When} = require('@cucumber/cucumber');
 const { By } = require('selenium-webdriver');
 const { browser } = require('../support/getBrowser');
-const waits = require('../commons/browser')
+const waits = require('../commons/waits')
 const fourthStepPage = require('../page-object/fourth-step-page');
 const upload = require('../commons/uploadFile');
 const { expect } = require('chai');

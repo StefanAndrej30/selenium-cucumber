@@ -1,5 +1,5 @@
 const seleniumWebdriver = require('selenium-webdriver');
-require('chromedriver');
+// require('chromedriver');
 // SELENIUM_BROWSER=safari node example/google_search - comand line
 
 
