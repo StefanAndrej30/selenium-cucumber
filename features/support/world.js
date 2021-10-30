@@ -5,16 +5,16 @@ const { setWorldConstructor, World, setDefaultTimeout } = require('@cucumber/cuc
 const {timeout, browserName} = require('../commons/config');
 
 
-class CustomWorld{
+class CustomWorld extends World {
 
-    constructor() {
-        this.name = null;
-        this.object = {};
+    constructor(option) {
+        super(option);
+        this.name = null
     }
-    
-    setName(name) {
-        this.name = name
-    }
+
+   setName(name) {
+       this.name = name;
+   }
 }
 
 setWorldConstructor(CustomWorld);

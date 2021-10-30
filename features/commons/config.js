@@ -8,7 +8,7 @@ module.exports = {
     baseURL: ``,
     cucumberOpts: {
       requireModule: ['@babel/register'],
-      require: ['./stepDefinitions/ui/**/*.js', './stepDefinitions/api/**/*.js'], // <string[]> (file/dir) require files before executing features
+      require: ['./features/**/*.feature', './features/**/*.js', '/home/andrej/selenium-cucumber/screenshots/'], // <string[]> (file/dir) require files before executing features
       backtrace: true, // <boolean> show full backtrace for errors
       // compiler: ['js:babel-core/register'], // <string[]> filetype:compiler used for processing required features
       compiler: [], // <string[]> filetype:compiler used for processing required features
