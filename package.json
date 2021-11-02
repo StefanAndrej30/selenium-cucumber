@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "UI": "node_modules/.bin/selenium-standalone start | node features/commons/httpConfig.js --env=$ENV | node_modules/.bin/cucumber-js --tags=$TAGS -f @cucumber/pretty-formatter features/*",
-    "UI-Reporter": "node features/commons/httpConfig.js --env=$ENV | node_modules/.bin/cucumber-js --tags=$TAGS --format=json:report/cucumber_report.json -f @cucumber/pretty-formatter features/* || node index.js"
+    "UI": "node_modules/.bin/selenium-standalone start & node features/commons/httpConfig.js --env=$ENV | node_modules/.bin/cucumber-js --tags=$TAGS --format=json:report/cucumber_report.json -f @cucumber/pretty-formatter features/*",
+    "UI-Reporter": "node_modules/.bin/selenium-standalone start & node features/commons/httpConfig.js --env=$ENV | node_modules/.bin/cucumber-js --tags=$TAGS --format=json:report/cucumber_report.json -f @cucumber/pretty-formatter features/* || node index.js"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +17,7 @@
     "cucumberjs-chromedriver": "^0.3.1",
     "fs-extra": "^10.0.0",
     "geckodriver": "^2.0.1",
+    "kill-port-process": "^3.0.1",
     "log4js": "^6.3.0",
     "moment": "^2.29.1",
     "selenium-standalone": "^8.0.4",
