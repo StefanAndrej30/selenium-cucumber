@@ -14,7 +14,6 @@ BeforeAll(async function() {
 });
 
 AfterAll(async function() {
-  await killPort(4444);
   return await browser.close();
 });
 

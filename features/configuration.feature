@@ -18,3 +18,15 @@ Feature: Configuration test
         And I choose "CERTIFICATION" type of upload and uplaod "199CertificationEmail.xlsx" file
         And I expect that analyst message is "199 invitees uploaded, 200 invitees required"
         And I expect that confirm upload button is not clickable
+
+
+
+# Scenario: APi
+#     Given I post:
+#         """
+#         {
+#             "name": "MIRKO",
+#             "job": "leader"
+#         }
+#         """
+#     And I expect status code to be 201

@@ -1,7 +1,7 @@
 /* eslint-disable new-cap */
 const { Then } = require('@cucumber/cucumber');
-const clientListPage = require('../page-object/client-list.page');
-const fourBoxDashboard = require('../page-object/four-box-dashboard.page');
+const clientListPage = require('../../page-object/client-list.page');
+const fourBoxDashboard = require('../../page-object/four-box-dashboard.page');
 
 
 Then('I select {string} affiliate', async function(affiliate) {

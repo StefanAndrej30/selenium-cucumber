@@ -1,8 +1,8 @@
 /* eslint-disable new-cap */
 const { Given, When} = require('@cucumber/cucumber');
-const loginPage = require('../page-object/emprising-login.page');
-const clientListPage = require('../page-object/client-list.page');
-const { httpConfig } = require('../commons/httpConfig');
+const loginPage = require('../../page-object/emprising-login.page');
+const clientListPage = require('../../page-object/client-list.page');
+const { httpConfig } = require('../../commons/httpConfig');
 
 
 Given('I am on emprising page', async function() {
