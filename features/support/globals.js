@@ -1,6 +1,6 @@
 const moment = require('moment')
 
-const Globals = {
+const globals = {
 
 getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -30,4 +30,4 @@ timeNow(format = 'LLL SSS') {
 },
 
 }
-module.exports = Globals
+module.exports = globals

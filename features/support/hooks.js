@@ -1,4 +1,6 @@
-const {Status, BeforeAll, AfterStep, AfterAll} = require('@cucumber/cucumber');
+'use strict';
+
+const {Status, BeforeAll, AfterStep, After, AfterFe} = require('@cucumber/cucumber');
 const { browser } = require('../support/getBrowser')
 const { clearFile }  = require('../commons/environment-setup');
 const {takeScreenshot, deleteFiles, takeScreenshotForReporter, killPort} = require('../commons/action');
@@ -10,11 +12,12 @@ const { logTrace } = require('../commons/logs');
 BeforeAll(async function() {
   await clearFile();
   await deleteFiles('screenshots');
-  return await browser.manage().window().maximize();
+  await browser.manage().window().maximize();
 });
 
-AfterAll(async function() {
-  return await browser.close();
+After(async function() {
+  await browser.close();
+  await killPort(4444);
 });
 
 
@@ -23,7 +26,7 @@ AfterStep(async function(scenario) {
     await logTrace(scenario.result);
     await takeScreenshot();
     this.attach(await takeScreenshotForReporter() , 'image/png');
+    formatterHelpers
   }
 });
-
 

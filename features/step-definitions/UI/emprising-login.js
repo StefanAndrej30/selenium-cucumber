@@ -5,11 +5,11 @@ const clientListPage = require('../../page-object/client-list.page');
 const { httpConfig } = require('../../commons/httpConfig');
 
 
-Given('I am on emprising page', async function() {
+Given('UI - I am on emprising page', async function() {
    await loginPage.open(httpConfig.baseUrl);
 });
 
-When('I login with username and password {string} {string} as {string}', async function (user, pass, typeOfUser) {
+When('UI - I login with username and password {string} {string} as {string}', async function (user, pass, typeOfUser) {
   switch (typeOfUser) {
     case 'CLIENT':
       loginPage.loginAsClient(user, pass);
@@ -17,7 +17,7 @@ When('I login with username and password {string} {string} as {string}', async f
       break;
     case 'GPTWUSER':
       await loginPage.loginAsGptwUser(user, pass);
-     await clientListPage.waitForClientList();
+      await clientListPage.waitForClientList();
       break;
     default:
       loginPage.loginAsClient(user, pass);

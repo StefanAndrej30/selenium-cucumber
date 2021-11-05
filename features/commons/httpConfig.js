@@ -5,6 +5,13 @@ if (env === 'prod') {
     httpConfig.baseUrl = 'https://app-cmp.greatplacetowork.com/';
 }
 
-httpConfig.baseUrl = `https://${env}-cmp.greatplacetowork.com/`;
+if (env === 'ltd') {
+    httpConfig.loginBaseUrl = `https://dev-login.greatplacetowork.com/identity/connect/token`;
 
-module.exports = {httpConfig};
+}
+
+httpConfig.baseUrl = `https://${env}-cmp.greatplacetowork.com/`;
+httpConfig.loginBaseUrl = `https://${env}-login.greatplacetowork.com/identity/connect/token`;
+httpConfig.emprisingBaseUrl = `https://${env}-cmpapi.greatplacetowork.com`;
+
+module.exports = { httpConfig };

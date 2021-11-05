@@ -50,20 +50,20 @@ class Waits {
 		  });
 	}
 
-	async clickElem (locator) {
-		let retries = 10;
-		try {
-		  const element = await browser.findElement(locator)
-		  //await browser.executeScript("arguments[0].click();", element);
-		  await element.click();
-		} catch (err) {
-		  if (retries === 0) {
-			throw new Error(`Still not able to click ${locator.toString()} after maximum retries, Error message: ${err.message.toString()}`)
-		  }
-		  await browser.sleep(250)
-		  return this.clickElem(locator, retries - 1)
-		}
-	  }
+	// async clickElem (locator) {
+	// 	let retries = 10;
+	// 	try {
+	// 	  const element =  await browser.findElement(locator)
+	// 	 // await browser.executeScript("arguments[0].click();", element);
+	// 	  await element.click();
+	// 	} catch (err) {
+	// 	  if (retries === 0) {
+	// 		throw new Error(`Still not able to click ${locator.toString()} after maximum retries, Error message: ${err.message.toString()}`)
+	// 	  }
+	// 	  await browser.sleep(250)
+	// 	  return this.clickElem(locator, retries - 1)
+	// 	}
+	//   }
 
 	  async sendKeysElem (locator, input) {
 		let retries = 10
@@ -73,7 +73,7 @@ class Waits {
 		  return
 		} catch (err) {
 		  if (retries === 0) {
-			throw new Error(`Still not able to click ${locator.toString()} after maximum retries, Error message: ${err.message.toString()}`)
+			throw new Error(`Still not able to send ${locator.toString()} after maximum retries, Error message: ${err.message.toString()}`)
 		  }
 		  await browser.sleep(250)
 		  return this.sendKeysElem(locator, input, retries - 1);
@@ -84,12 +84,12 @@ class Waits {
 	  async WaitForElem (locator) {
 		let retries = 10;
 		try {
-		  const element = await await browser.wait(until.elementLocated(locator));
+		  const element = await browser.wait(until.elementLocated(locator));
 		  await element;
 		  return
 		} catch (err) {
 		  if (retries === 0) {
-			throw new Error(`Still not able to click ${locator.toString()} after maximum retries, Error message: ${err.message.toString()}`)
+			throw new Error(`Still not able to find ${locator.toString()} after maximum retries, Error message: ${err.message.toString()}`)
 		  }
 		  await browser.sleep(250)
 		  return this.WaitForElem(locator, retries - 1)
@@ -97,5 +97,10 @@ class Waits {
 	  }
 
 
+	  async clickElem (locator) {
+		const element = await browser.wait(until.elementLocated(locator));
+		 await browser.wait(until.elementIsVisible(element));
+		 await element.click();
+	}
 }
 module.exports = new Waits();

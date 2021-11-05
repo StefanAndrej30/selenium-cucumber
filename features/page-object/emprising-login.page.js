@@ -66,14 +66,16 @@ class LoginPage {
 	//   this.loginButton.click();
 	// }
 
-	 	async loginAsGptwUser(username, password) {
+	 	async loginAsGptwUser (username, password) {
 		await waits.clickElem(this.gptwEmployeesButton);
 		await waits.sendKeysElem(this.usernameInputForGptw,username);
 		await waits.clickElem(this.nextButtonForGptw);
 		await waits.sendKeysElem(this.passwordInputForGptw,password);
 		await waits.clickElem(this.loginButtonForGptw);
 		await waits.clickElem(this.staySignedInNoButton);
+
     }
+
 	async open(url = '') {
 		await browser.get(url);
 	}
