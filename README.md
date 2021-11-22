@@ -15,7 +15,7 @@ Selelenium webdriver with node.js and cucumber for automating UI test
 
 
 ## Run
-* Navigate into selenium-cucumber* and before runing the test run npm start and to run the test suite for specific environment:
+* Navigate into selenium-cucumber* and before runing the test run npm start and after that you can run the test suite for specific environment:
 ## dev
 ENV=dev TAGS=@tagName npm run UI
 ## qa

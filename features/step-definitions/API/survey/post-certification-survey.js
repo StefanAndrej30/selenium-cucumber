@@ -6,7 +6,7 @@ const authorize = require('../../../commons/authorization');
 const { certificationSurveyTypes } = require('../../../commons/enums');
 
 
-Then('I create {string} survey', async function (typeOfSurvey) {
+Then('I create {string} survey |status code: {int}|', async function (typeOfSurvey, statusCode) {
     const postBody = {
         "SurveyType": certificationSurveyTypes[typeOfSurvey]
     }
@@ -15,10 +15,13 @@ Then('I create {string} survey', async function (typeOfSurvey) {
         .post('/api/en-US/Certification/Survey')
         .send(postBody)
         .set(authorize.getDefaultHeaders())
-        .expect(200)
+        .expect('Content-Type', /json/)
+        .expect(statusCode)
     )
     this.surveyId = this.response.body.SurveyId;
     this.clientId = this.response.body.ClientId;
     this.surveyName = this.response.body.Name;
     this.projectId = this.response.body.ProjectID;
 });
+
+

@@ -5,7 +5,7 @@ const request = supertest(httpConfig.emprisingBaseUrl);
 const authorize = require('../../../commons/authorization');
 
 
-Then('API - I edit survey:', async function (docString) {
+Then('I edit survey: |status code: {int}|', async function (statusCode ,docString) {
     const parsedBody = await JSON.parse(docString);
 
     const postBody = {
@@ -95,6 +95,6 @@ Then('API - I edit survey:', async function (docString) {
         .put(`/api/Surveys/${this.surveyId}`)
         .send(postBody)
         .set(authorize.getDefaultHeaders())
-        .expect(200)
+        .expect(statusCode)
     )
 });

@@ -1,22 +1,22 @@
 @testingApi
 
 Feature: Api testing
-
+    # API test
 
     Scenario: Api get token
-        Given API - Get user token
-        When API - I set headers to be:
+        Given Get user token
+        When I set headers to be:
             """
             {
                 "Content-type": "application/json; charset=utf-8",
                 "Authorization": "USER",
-                "gptw_client_id": "146000003",
-                "gptw_affiliate_id": "BR1",
+                "gptw_client_id": "102999989",
+                "gptw_affiliate_id": "DE1",
                 "ConnectionId": "e3e03bc1-35c5-417f-a5c3-ffa9a76d82c9"
             }
             """
-        And I create "ASSES" survey
-        And API - I edit survey:
+        And I create "ASSES" survey |status code: 2001|
+        And I edit survey: |status code: 200|
             """
             {
                 "IsAnonymous": false,
@@ -28,4 +28,4 @@ Feature: Api testing
                 "QCountry": true
             }
             """
-        And I put draft state to be 3
+        And I put draft state to be 3 |status code: 200|
