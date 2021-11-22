@@ -1,6 +1,5 @@
 @configuration @test
 Feature: Configuration test
-# UI test
 
     Scenario: Upload certification file and expect to not be able to confirm it
         Given I am on emprising page

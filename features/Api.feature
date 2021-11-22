@@ -15,7 +15,7 @@ Feature: Api testing
                 "ConnectionId": "e3e03bc1-35c5-417f-a5c3-ffa9a76d82c9"
             }
             """
-        And I create "ASSES" survey |status code: 2001|
+        And I create "ASSES" survey |status code: 200|
         And I edit survey: |status code: 200|
             """
             {
@@ -29,3 +29,7 @@ Feature: Api testing
             }
             """
         And I put draft state to be 3 |status code: 200|
+
+
+
+
