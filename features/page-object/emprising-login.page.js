@@ -41,6 +41,23 @@ class LoginPage {
 		return By.css('#idBtn_Back');
 	}
 
+	get usernameInputForClient() {
+		return By.css('#Email');
+	}
+
+	get passwordInputForClient() {
+		return By.css('#Password');
+	}
+
+	get surveyPlusButton() {
+		return ('.pd-create-survey-btn')
+
+	}
+
+	async loginButtonForClient() {
+		await browser.findElement(By.xpath(`//button[normalize-space()='Login']`)).click();
+	}
+
 	/**
      * Define or overwrite page methods
      */
@@ -75,6 +92,17 @@ class LoginPage {
 		await waits.clickElem(this.staySignedInNoButton);
 
     }
+
+	async loginAsClient (username, password) {
+		await waits.sendKeysElem(this.usernameInputForClient, username);
+		await waits.sendKeysElem(this.passwordInputForClient, password);
+		await this.loginButtonForClient();
+
+    }
+
+	async waitFor4BoxDashboardToLoad () {
+		await waits.waitByCSS(this.surveyPlusButton);
+	}
 
 	async open(url = '') {
 		await browser.get(url);

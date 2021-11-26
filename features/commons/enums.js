@@ -5,4 +5,13 @@ const certificationSurveyTypes = {
     'ACCELERATE': 4
 }
 
-module.exports = { certificationSurveyTypes }
+const surveyFlows = {
+    'EMAIL': 1,
+    'ANONYMOUS': 2,
+    'YNN': 4,
+    'YYN': 12,
+    'YNY': 20,
+    'YYY': 28,
+}
+
+module.exports = { certificationSurveyTypes, surveyFlows }

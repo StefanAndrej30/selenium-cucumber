@@ -12,8 +12,8 @@ Given('I am on emprising page', async function() {
 When('I login with username and password {string} {string} as {string}', async function (user, pass, typeOfUser) {
   switch (typeOfUser) {
     case 'CLIENT':
-      loginPage.loginAsClient(user, pass);
-      fourBoxDashboard.waitFor4BoxDashboardToLoad();
+      await loginPage.loginAsClient(user, pass);
+      await loginPage.waitFor4BoxDashboardToLoad();
       break;
     case 'GPTWUSER':
       await loginPage.loginAsGptwUser(user, pass);

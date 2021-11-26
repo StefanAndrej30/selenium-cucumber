@@ -4,6 +4,8 @@ const supertest = require('supertest');
 const request = supertest(httpConfig.emprisingBaseUrl);
 const authorize = require('../../../commons/authorization');
 const { certificationSurveyTypes } = require('../../../commons/enums');
+const { browser } = require('../../../support/getBrowser');
+const { expect } = require('chai');
 
 
 Then('I create {string} survey |status code: {int}|', async function (typeOfSurvey, statusCode) {
@@ -23,5 +25,4 @@ Then('I create {string} survey |status code: {int}|', async function (typeOfSurv
     this.surveyName = this.response.body.Name;
     this.projectId = this.response.body.ProjectID;
 });
-
 

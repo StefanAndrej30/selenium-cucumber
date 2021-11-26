@@ -26,6 +26,9 @@ When('I choose {string} type of upload and uplaod {string} file', async function
             await waits.WaitForElem(By.xpath('//*[@id="fileUploadBtn"]/input'));
             await upload.uploadFile(await fourthStepPage.certificationUpload,`../../data/uploadFiles/${file}`);
         break;
+        case 'EMAIL':
+            await waits.WaitForElem(By.xpath('//*[@id="emailDistributionBtn"]/input'));
+            await upload.uploadFile(await By.xpath('//*[@id="emailDistributionBtn"]/input'));
     }
 });
 
@@ -37,4 +40,8 @@ When('I expect that confirm upload button is not clickable', async function () {
 
 When('I expect that analyst message is {string}', async function (msg) {
     await fourthStepPage.getAnalystMessage(msg);
+});
+
+When('I click OK button', async function() {
+    await waits.clickElem(fourthStepPage.OKButton);
 });

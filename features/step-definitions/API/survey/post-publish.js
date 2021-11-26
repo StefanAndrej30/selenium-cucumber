@@ -1,21 +1,19 @@
-const { Given } = require('@cucumber/cucumber');
+const { Then } = require('@cucumber/cucumber');
 const { httpConfig } = require('../../../commons/httpConfig');
 const supertest = require('supertest');
 const request = supertest(httpConfig.emprisingBaseUrl);
-const globals = require('../../../support/globals')
 const authorize = require('../../../commons/authorization');
 
-Given('I create new project with random name |status code: {int}|', async function (statusCode) {
+Then('I publish survey |status code: {int}|', async function (statusCode) {
     const postBody = {
-        Name: `Supertest ${globals.timeNow()} ${globals.getRandomInt(0, 999)}`
+        Publish: true
     }
 
     this.setResponse(await request
-        .post('/api/Project')
+        .post(`/api/en-US/Project/${this.projectId}/Survey/${this.surveyId}/Publish`)
         .send(postBody)
         .set(authorize.getDefaultHeaders())
         .expect(statusCode)
-    );
 
-    this.projectId = this.response.body.ProjectID
+    )
 });

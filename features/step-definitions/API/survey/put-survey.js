@@ -21,7 +21,7 @@ Then('I edit survey: |status code: {int}|', async function (statusCode ,docStrin
         "StartDate": parsedBody.StartDate,
         "CloseDate":parsedBody.CloseDate,
         "Link": "7VHET2PV7I",
-        "NumberOfInvites": null,
+        "NumberOfInvites": null || parsedBody.NumberOfInvites,
         "Modifier": "GPTW Orchestrator User",
         "Modified": "2021-11-05T19:01:01.697",
         "IsToday": parsedBody.IsToday,

@@ -17,7 +17,7 @@ class fourtStep {
 
  get analystMessageForCertiifaction() {return By.css('.analysis-list')}
 
-
+get OKButton() { return By.xpath('//*[@ng-click="$close()"]'); }
 
     async enterInputForEmployes(employes) {
         await waits.sendKeysElem(this.emoloyesInput,employes);
