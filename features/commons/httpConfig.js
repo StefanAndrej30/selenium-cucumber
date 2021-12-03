@@ -1,3 +1,4 @@
+/* eslint-disable quotes */
 const env = require('../commons/environment-setup').readFile();
 
 const httpConfig = {};

@@ -1,13 +1,13 @@
 const { Given, When} = require('@cucumber/cucumber');
 const { By } = require('selenium-webdriver');
 const { browser } = require('../../support/getBrowser');
-const waits = require('../../commons/waits')
+const waits = require('../../commons/waits');
 const fourthStepPage = require('../../page-object/fourth-step-page');
 const upload = require('../../commons/uploadFile');
 const { expect } = require('chai');
 
 Given('I enter {string} employes', async function (employe) {
-   await fourthStepPage.enterInputForEmployes(employe)
+    await fourthStepPage.enterInputForEmployes(employe);
 
 });
 
@@ -22,19 +22,19 @@ When('I click confirm button', async function () {
 
 When('I choose {string} type of upload and uplaod {string} file', async function (typeOfUpload, file) {
     switch(typeOfUpload) {
-        case 'CERTIFICATION':
-            await waits.WaitForElem(By.xpath('//*[@id="fileUploadBtn"]/input'));
-            await upload.uploadFile(await fourthStepPage.certificationUpload,`../../data/uploadFiles/${file}`);
+    case 'CERTIFICATION':
+        await waits.WaitForElem(By.xpath('//*[@id="fileUploadBtn"]/input'));
+        await upload.uploadFile(await fourthStepPage.certificationUpload,`../../data/uploadFiles/${file}`);
         break;
-        case 'EMAIL':
-            await waits.WaitForElem(By.xpath('//*[@id="emailDistributionBtn"]/input'));
-            await upload.uploadFile(await By.xpath('//*[@id="emailDistributionBtn"]/input'));
+    case 'EMAIL':
+        await waits.WaitForElem(By.xpath('//*[@id="emailDistributionBtn"]/input'));
+        await upload.uploadFile(await By.xpath('//*[@id="emailDistributionBtn"]/input'));
     }
 });
 
 When('I expect that confirm upload button is not clickable', async function () {
     await waits.WaitForElem(fourthStepPage.confirmUploadButton);
-    let elm = await browser.findElement(fourthStepPage.confirmUploadButton)
+    let elm = await browser.findElement(fourthStepPage.confirmUploadButton);
     expect(await elm.isEnabled()).to.be.false;
 });
 

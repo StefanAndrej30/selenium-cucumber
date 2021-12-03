@@ -4,14 +4,13 @@ const supertest = require('supertest');
 const request = supertest(httpConfig.emprisingBaseUrl);
 const authorize = require('../../../commons/authorization');
 const { certificationSurveyTypes } = require('../../../commons/enums');
-const { browser } = require('../../../support/getBrowser');
-const { expect } = require('chai');
+
 
 
 Then('I create {string} survey |status code: {int}|', async function (typeOfSurvey, statusCode) {
     const postBody = {
-        "SurveyType": certificationSurveyTypes[typeOfSurvey]
-    }
+        'SurveyType': certificationSurveyTypes[typeOfSurvey]
+    };
 
     this.setResponse(await request
         .post('/api/en-US/Certification/Survey')
@@ -19,7 +18,7 @@ Then('I create {string} survey |status code: {int}|', async function (typeOfSurv
         .set(authorize.getDefaultHeaders())
         .expect('Content-Type', /json/)
         .expect(statusCode)
-    )
+    );
     this.surveyId = this.response.body.SurveyId;
     this.clientId = this.response.body.ClientId;
     this.surveyName = this.response.body.Name;

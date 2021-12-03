@@ -19,7 +19,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1277000000
+              "duration": 958000000
             }
           },
           {
@@ -37,7 +37,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1000000
+              "duration": 0
             }
           },
           {
@@ -50,7 +50,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1637000000
+              "duration": 1160000000
             }
           },
           {
@@ -63,7 +63,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1329000000
+              "duration": 1506000000
             }
           },
           {
@@ -81,7 +81,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1844000000
+              "duration": 1277000000
             }
           },
           {
@@ -94,7 +94,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1223000000
+              "duration": 1124000000
             }
           },
           {
@@ -103,11 +103,11 @@
             "line": 34,
             "name": "I set token in session storage to \"clientToken\"",
             "match": {
-              "location": "features/step-definitions/UI/emprising-login.js:32"
+              "location": "features/step-definitions/UI/emprising-login.js:33"
             },
             "result": {
               "status": "passed",
-              "duration": 3250000000
+              "duration": 3296000000
             }
           },
           {
@@ -120,7 +120,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 480000000
+              "duration": 437000000
             }
           },
           {
@@ -133,7 +133,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 7313000000
+              "duration": 7833000000
             }
           },
           {
@@ -142,11 +142,11 @@
             "line": 37,
             "name": "I click schedule and messaging modal",
             "match": {
-              "location": "features/step-definitions/UI/third-step.js:14"
+              "location": "features/step-definitions/UI/third-step.js:13"
             },
             "result": {
               "status": "passed",
-              "duration": 1058000000
+              "duration": 623000000
             }
           },
           {
@@ -155,11 +155,11 @@
             "line": 38,
             "name": "I expect that placeholder \"support@example.com\" is displayed",
             "match": {
-              "location": "features/step-definitions/UI/third-step.js:18"
+              "location": "features/step-definitions/UI/third-step.js:17"
             },
             "result": {
               "status": "passed",
-              "duration": 856000000
+              "duration": 946000000
             }
           },
           {
@@ -167,7 +167,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 442000000
+              "duration": 401000000
             }
           }
         ],

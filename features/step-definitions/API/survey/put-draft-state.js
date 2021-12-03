@@ -10,6 +10,7 @@ Then('I put draft state to be {int} |status code: {int}|', async function (draft
     this.setResponse(await request
         .patch(`/api/en-US/Project/${this.projectId}/Survey/${this.surveyId}/DraftState?draftState=${draftState}`)
         .set(authorize.getDefaultHeaders())
+        .expect('Content-Type', /json/)
         .expect(statusCode)
-    )
+    );
 });
