@@ -45,3 +45,4 @@ When('I expect that analyst message is {string}', async function (msg) {
 When('I click OK button', async function() {
     await waits.clickElem(fourthStepPage.OKButton);
 });
+

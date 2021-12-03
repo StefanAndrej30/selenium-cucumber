@@ -8,7 +8,6 @@ Feature: Api testing
         When I set headers to be:
             """
             {
-                "Content-type": "application/json; charset=utf-8",
                 "Authorization": "USER",
                 "gptw_client_id": "146000003",
                 "gptw_affiliate_id": "BR1",

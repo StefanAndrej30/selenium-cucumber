@@ -2,7 +2,8 @@ class Authorization {
 
     constructor() {
         this.tokens = {
-            userToken:''
+            userToken: '',
+            clientToken: ''
         }
         this.defaultHeaders = {};
     }

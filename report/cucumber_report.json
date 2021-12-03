@@ -4,110 +4,162 @@
     "elements": [
       {
         "description": "",
-        "id": "api-testing;api-get-token",
+        "id": "configuration-test;upload-certification-file-and-expect-to-not-be-able-to-confirm-it",
         "keyword": "Scenario",
-        "line": 6,
-        "name": "Api get token",
+        "line": 4,
+        "name": "Upload certification file and expect to not be able to confirm it",
         "steps": [
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 7,
+            "line": 6,
             "name": "Get user token",
             "match": {
               "location": "features/step-definitions/API/post-login.js:12"
             },
             "result": {
               "status": "passed",
-              "duration": 1267000000
+              "duration": 1277000000
             }
           },
           {
             "arguments": [
               {
                 "content": "{\n    \"Content-type\": \"application/json; charset=utf-8\",\n    \"Authorization\": \"USER\",\n    \"gptw_client_id\": \"146000003\",\n    \"gptw_affiliate_id\": \"BR1\",\n    \"ConnectionId\": \"e3e03bc1-35c5-417f-a5c3-ffa9a76d82c9\"\n}",
-                "line": 9
+                "line": 8
               }
             ],
-            "keyword": "When ",
-            "line": 8,
+            "keyword": "And ",
+            "line": 7,
             "name": "I set headers to be:",
             "match": {
               "location": "features/step-definitions/UI/general.js:12"
             },
             "result": {
               "status": "passed",
-              "duration": 2000000
+              "duration": 1000000
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
-            "line": 18,
+            "line": 17,
             "name": "I create new project with random name |status code: 201|",
             "match": {
               "location": "features/step-definitions/API/project/post-project.js:8"
             },
             "result": {
               "status": "passed",
-              "duration": 1114000000
+              "duration": 1637000000
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
-            "line": 19,
-            "name": "I create a new \"ANONYMOUS\" survey |status code: 201|",
+            "line": 18,
+            "name": "I create a new \"EMAIL\" survey |status code: 201|",
             "match": {
               "location": "features/step-definitions/API/survey/post-survey.js:8"
             },
             "result": {
               "status": "passed",
-              "duration": 1375000000
+              "duration": 1329000000
             }
           },
           {
             "arguments": [
               {
                 "content": "{\n    \"IsAnonymous\": true,\n    \"StartDate\": null,\n    \"CloseDate\": \"2040-11-27T18:00:00\",\n    \"SurveyFlow\": 1,\n    \"isToday\": true,\n    \"QCertify\": false,\n    \"QCountry\": false,\n    \"NumberOfInvites\": 30\n}",
-                "line": 21
+                "line": 20
               }
             ],
             "keyword": "And ",
-            "line": 20,
+            "line": 19,
             "name": "I edit survey: |status code: 200|",
             "match": {
               "location": "features/step-definitions/API/survey/put-survey.js:8"
             },
             "result": {
               "status": "passed",
-              "duration": 6483000000
+              "duration": 1844000000
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
-            "line": 33,
-            "name": "I put draft state to be 4 |status code: 200|",
+            "line": 32,
+            "name": "I put draft state to be 2 |status code: 200|",
             "match": {
               "location": "features/step-definitions/API/survey/put-draft-state.js:8"
             },
             "result": {
               "status": "passed",
-              "duration": 1013000000
+              "duration": 1223000000
             }
           },
           {
             "arguments": [],
-            "keyword": "Then ",
+            "keyword": "And ",
             "line": 34,
-            "name": "I publish survey |status code: 200|",
+            "name": "I set token in session storage to \"clientToken\"",
             "match": {
-              "location": "features/step-definitions/API/survey/post-publish.js:7"
+              "location": "features/step-definitions/UI/emprising-login.js:32"
             },
             "result": {
               "status": "passed",
-              "duration": 1648000000
+              "duration": 3250000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 35,
+            "name": "I visit previously created survey with next url \"assessment-design/survey-design\"",
+            "match": {
+              "location": "features/step-definitions/UI/general.js:25"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 480000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 36,
+            "name": "I click OK button",
+            "match": {
+              "location": "features/step-definitions/UI/fourth-step.js:45"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 7313000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 37,
+            "name": "I click schedule and messaging modal",
+            "match": {
+              "location": "features/step-definitions/UI/third-step.js:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1058000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 38,
+            "name": "I expect that placeholder \"support@example.com\" is displayed",
+            "match": {
+              "location": "features/step-definitions/UI/third-step.js:18"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 856000000
             }
           },
           {
@@ -115,29 +167,37 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 202000000
+              "duration": 442000000
             }
           }
         ],
         "tags": [
           {
-            "name": "@testingApi",
+            "name": "@configuration",
+            "line": 1
+          },
+          {
+            "name": "@test",
             "line": 1
           }
         ],
         "type": "scenario"
       }
     ],
-    "id": "api-testing",
-    "line": 3,
+    "id": "configuration-test",
+    "line": 2,
     "keyword": "Feature",
-    "name": "Api testing",
+    "name": "Configuration test",
     "tags": [
       {
-        "name": "@testingApi",
+        "name": "@configuration",
+        "line": 1
+      },
+      {
+        "name": "@test",
         "line": 1
       }
     ],
-    "uri": "features/Api.feature"
+    "uri": "features/configuration.feature"
   }
 ]

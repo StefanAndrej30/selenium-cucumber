@@ -29,9 +29,10 @@ Feature: Configuration test
                 "NumberOfInvites": 30
             }
             """
-        And I put draft state to be 3 |status code: 200|
+        And I put draft state to be 2 |status code: 200|
         #UI
-        And I am on emprising page
-        When I login with username and password "stefan.andrej.marjanovic+supertest@htecgroup.com" "Andrej10.10" as "CLIENT"
-        And I visit previously created survey with next url "assessment-design/distribution/email"
+        And I set token in session storage to "clientToken"
+        And I visit previously created survey with next url "assessment-design/survey-design"
         And I click OK button
+        And I click schedule and messaging modal
+        And I expect that placeholder "support@example.com" is displayed

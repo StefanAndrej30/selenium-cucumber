@@ -22,6 +22,7 @@
     "kill-port-process": "^3.0.1",
     "log4js": "^6.3.0",
     "moment": "^2.29.1",
+    "node-sessionstorage": "^1.0.0",
     "querystring": "^0.2.1",
     "sinon-chai": "^3.7.0",
     "yargs": "^17.0.1"

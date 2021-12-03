@@ -17,7 +17,11 @@ class fourtStep {
 
  get analystMessageForCertiifaction() {return By.css('.analysis-list')}
 
-get OKButton() { return By.xpath('//*[@ng-click="$close()"]'); }
+get OKButton() { return By.css('.btn.btn--primary.btn'); }
+
+get languageUiPicker() { return By.css('.uiLanguagePicker'); }
+
+get languageUlDropdown() { return By.css('.dropdown-menu.dropdown-menu__one-line'); }
 
     async enterInputForEmployes(employes) {
         await waits.sendKeysElem(this.emoloyesInput,employes);

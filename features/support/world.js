@@ -9,6 +9,7 @@ class CustomWorld extends World {
         super(option);
         this.name = null
         this.response = {};
+        this.sessionStorage;
     }
 
     setName(name) {
@@ -17,6 +18,10 @@ class CustomWorld extends World {
 
     setResponse(res) {
         this.response = res
+    }
+
+    setSessionStorage(sessionStorage) {
+        this.sessionStorage = sessionStorage
     }
 }
 

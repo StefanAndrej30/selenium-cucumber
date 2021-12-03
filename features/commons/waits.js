@@ -1,53 +1,53 @@
-const {By, until } = require('selenium-webdriver');
-const {timeout} = require('./config');
-const {browser} = require('../support/getBrowser');
+const { By, until } = require('selenium-webdriver');
+const { timeout } = require('./config');
+const { browser } = require('../support/getBrowser');
 
 class Waits {
 
 	async waitForScript() {
-		await browser.manage().setTimeouts( { implicit: 10000 } );
+		await browser.manage().setTimeouts({ implicit: 10000 });
 	}
 
-	 	async clickByXpath(selector) {
-		try{
-			await browser.wait(until.elementLocated(By.xpath(selector)),timeout).click();
-		}catch (error){
+	async clickByXpath(selector) {
+		try {
+			await browser.wait(until.elementLocated(By.xpath(selector)), timeout).click();
+		} catch (error) {
 			console.log(error);
 		}
 	}
 
-	 async sendKeysByXpath(selector,input) {
-		 await browser.wait(until.elementLocated(By.xpath(selector)),timeout).then(function(elm) {
+	async sendKeysByXpath(selector, input) {
+		await browser.wait(until.elementLocated(By.xpath(selector)), timeout).then(function (elm) {
 			return elm.sendKeys(input);
 		});
 	}
 
-	 async clickByCSS(selector) {
-		 try{
-			await browser.wait(until.elementLocated(By.css(selector)),timeout).click();
-		 }catch(error){
-			 console.log(error)
-		 }
+	async clickByCSS(selector) {
+		try {
+			await browser.wait(until.elementLocated(By.css(selector)), timeout).click();
+		} catch (error) {
+			console.log(error)
+		}
 	}
 
-	async sendKeysByCSS(selector,input) {
-			await browser.wait(until.elementLocated(By.css(selector)),timeout).then(function(elm) {
+	async sendKeysByCSS(selector, input) {
+		await browser.wait(until.elementLocated(By.css(selector)), timeout).then(function (elm) {
 			return elm.sendKeys(input);
 		});
 	}
 
 	async waitByCSS(selector) {
-		try{
-		await browser.wait(until.elementLocated(By.css(selector)),timeout);
-		}catch(error){
+		try {
+			await browser.wait(until.elementLocated(By.css(selector)), timeout);
+		} catch (error) {
 			console.log(error);
 		}
 	}
 
 	async waitForPageToLoad() {
-	   await browser.wait(async function() {
+		await browser.wait(async function () {
 			return browser.executeScript('return document.readyState');
-		  });
+		});
 	}
 
 	// async clickElem (locator) {
@@ -65,42 +65,53 @@ class Waits {
 	// 	}
 	//   }
 
-	  async sendKeysElem (locator, input) {
+	async sendKeysElem(locator, input) {
 		let retries = 10
 		try {
-		  const element = await browser.findElement(locator)
-		  await element.sendKeys(input);
-		  return
+			const element = await browser.findElement(locator)
+			await element.sendKeys(input);
+			return
 		} catch (err) {
-		  if (retries === 0) {
-			throw new Error(`Still not able to send ${locator.toString()} after maximum retries, Error message: ${err.message.toString()}`)
-		  }
-		  await browser.sleep(250)
-		  return this.sendKeysElem(locator, input, retries - 1);
+			if (retries === 0) {
+				throw new Error(`Still not able to send ${locator.toString()} after maximum retries, Error message: ${err.message.toString()}`)
+			}
+			await browser.sleep(250)
+			return this.sendKeysElem(locator, input, retries - 1);
 		}
-	  }
+	}
 
 
-	  async WaitForElem (locator) {
+	async WaitForElem(locator) {
 		let retries = 10;
 		try {
-		  const element = await browser.wait(until.elementLocated(locator));
-		  await element;
-		  return
+			const element = await browser.wait(until.elementLocated(locator));
+			await browser.wait(until.elementIsVisible(element));
+			return
 		} catch (err) {
-		  if (retries === 0) {
-			throw new Error(`Still not able to find ${locator.toString()} after maximum retries, Error message: ${err.message.toString()}`)
-		  }
-		  await browser.sleep(250)
-		  return this.WaitForElem(locator, retries - 1)
+			if (retries === 0) {
+				throw new Error(`Still not able to find ${locator.toString()} after maximum retries, Error message: ${err.message.toString()}`)
+			}
+			await browser.sleep(250)
+			return this.WaitForElem(locator, retries - 1)
 		}
-	  }
+	}
 
 
-	  async clickElem (locator) {
+	async clickElem(locator) {
+		let retries = 10;
 		const element = await browser.wait(until.elementLocated(locator));
-		 await browser.wait(until.elementIsVisible(element));
-		 await element.click();
+		await browser.wait(until.elementIsVisible(element));
+		try {
+			await element.click();
+			return
+		}
+		catch (err) {
+			if (retries === 0) {
+				console.log(`STILL NOT CLICKABLE ${locator.toString()}`);
+			}
+		}
+		return this.clickElem(locator, retries - 1);
+
 	}
 }
 module.exports = new Waits();

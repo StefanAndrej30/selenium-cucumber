@@ -14,8 +14,8 @@ async function takeScreenshot(){
   }
 
 async function deleteFiles(folder) {
+  await fsExtra.emptyDirSync(path.join(__dirname,`../../${folder}`));
 
-await fsExtra.emptyDirSync(path.join(__dirname,`../../${folder}`));
 }
 
 async function takeScreenshotForReporter() {
@@ -28,4 +28,30 @@ async function killPort(port) {
  await killPortProcess(port); 
 }
 
-module.exports = {takeScreenshot, deleteFiles, takeScreenshotForReporter, killPort};
+
+async function getLocalItem(key) {
+  return await browser.executeScript(
+    `return window.localStorage.getItem("${key}");`
+  );
+}
+
+async function getSessionItem(key) {
+  return await browser.executeScript(
+    `return window.sessionStorage.getItem("${key}");`
+  );
+}
+
+async function setLocalStorage(key, value) {
+  await browser.executeScript(`window.localStorage.setItem('${key}','${value}')`);
+
+}
+
+
+async function setSessionStorage(key, value) {
+  await browser.executeScript(`window.sessionStorage.setItem('${key}','${value}')`);
+}
+
+
+module.exports = {takeScreenshot, deleteFiles, takeScreenshotForReporter, killPort, getLocalItem, getSessionItem, setSessionStorage, setLocalStorage}
+
+

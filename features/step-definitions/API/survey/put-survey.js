@@ -25,7 +25,7 @@ Then('I edit survey: |status code: {int}|', async function (statusCode ,docStrin
         "Modifier": "GPTW Orchestrator User",
         "Modified": "2021-11-05T19:01:01.697",
         "IsToday": parsedBody.IsToday,
-        "ContactEmail": "fewfwe@gmail.com",
+        "ContactEmail": parsedBody.ContactEmail ||"fewfwe@gmail.com",
         "DraftState": 2,
         "IsEDFCompleted": false,
         "IsEDFFlow": false,
