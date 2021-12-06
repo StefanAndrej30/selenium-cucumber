@@ -2,28 +2,28 @@ const { argv } = require('yargs');
 const fs = require('fs');
 
 function writeFile() {
-    fs.writeFileSync('.env', argv.env, (err) => {
-        if (err) throw err;
-    });
+  fs.writeFileSync('.env', argv.env, (err) => {
+    if (err) throw err;
+  });
 }
 
 function clearFile() {
-    fs.writeFileSync('.env', '', (err) => {
-        if (err) throw err;
-    });
+  fs.writeFileSync('.env', '', (err) => {
+    if (err) throw err;
+  });
 }
 
 function readFile() {
-    const rawdata = fs.readFileSync('.env');
-    return String(rawdata);
+  const rawdata = fs.readFileSync('.env');
+  return String(rawdata);
 }
 
 if (readFile() === 'undefined' || !readFile()) {
-    writeFile();
+  writeFile();
 }
 
 if (readFile() === argv.env) {
-    writeFile();
+  writeFile();
 }
 
 exports.clearFile = clearFile;

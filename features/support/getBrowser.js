@@ -2,12 +2,7 @@
 
 const seleniumWebdriver = require('selenium-webdriver');
 
-
-
 function getBrowser(browserName) {
-  
-    return new seleniumWebdriver.Builder().forBrowser(browserName).build();
+  return new seleniumWebdriver.Builder().forBrowser(browserName).build();
 }
 exports.browser = getBrowser('chrome');
-
-

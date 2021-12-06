@@ -1,29 +1,40 @@
 {
     "env": {
-        "browser": true,
-        "commonjs": true,
-        "es2021": true
+        "es2020": true,
+        "node": true,
+        "webextensions": true,
+        "jquery": true
     },
-    "extends": "eslint:recommended",
+    "extends": [
+        "airbnb-base"
+    ],
+    "plugins": [
+        "cucumber"
+    ],
     "parserOptions": {
-        "ecmaVersion": 12
+        "ecmaVersion": 11,
+        "sourceType": "module"
     },
     "rules": {
-        "indent": [
-            "error",
-            4
-        ],
-        "linebreak-style": [
-            "error",
-            "unix"
-        ],
-        "quotes": [
-            "error",
-            "single"
-        ],
-        "semi": [
-            "error",
-            "always"
-        ]
+        "cucumber/async-then": 2,
+        "cucumber/expression-type": 2,
+        "cucumber/no-restricted-tags": [2, "wip", "broken", "foo"],
+        "cucumber/no-arrow-functions": 2,
+        "func-names":"off",
+        "prefer-arrow-callback":"off",
+        "no-console":"off",
+        "quote-props":"off",
+        "import/no-extraneous-dependencies": "off",
+        "class-methods-use-this":"off",
+        "no-unused-expressions": "off", 
+        "linebreak-style": "off",
+        "max-len": "off",
+        "no-param-reassign": "off",
+        "no-await-in-loop": "off",
+        "no-bitwise": "off",
+        "no-plusplus": "off"
+    },
+    "globals": {
+        "$$": "writable"
     }
 }

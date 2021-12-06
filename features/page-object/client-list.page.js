@@ -1,12 +1,11 @@
-const { browser } = require('../support/getBrowser');
 const { By } = require('selenium-webdriver');
+const { browser } = require('../support/getBrowser');
 const waits = require('../commons/waits');
 
-class ClientListPage{
-
+class ClientListPage {
   get createClientButton() { return ('#test-create-client-btn'); }
 
-  get clientList() { return ('.client-list__filter'); }  
+  get clientList() { return ('.client-list__filter'); }
 
   get clientSettingsButton() { return ('.client-list__settings'); }
 
@@ -14,12 +13,12 @@ class ClientListPage{
 
   get clientSearchField() { return By.xpath('//*[@name="search"]'); }
 
-  get clientRow() { return By.css('.table-horiz-border-row') }
+  get clientRow() { return By.css('.table-horiz-border-row'); }
 
-  searchAndClickClient(clientId) {return (By.xpath(`//div[normalize-space()="${clientId}"]`)) }
+  searchAndClickClient(clientId) { return (By.xpath(`//div[normalize-space()="${clientId}"]`)); }
 
   async waitForClientList() {
-   await waits.waitByCSS(this.clientList);
+    await waits.waitByCSS(this.clientList);
   }
 
   checkClientListToBeDisplayed() {
@@ -32,16 +31,16 @@ class ClientListPage{
 
   async selectAffiliate(affiliate) {
     await waits.clickByCSS(this.affiliateIcon);
-     let elm =  await browser.findElement(By.css('.btn')).findElement(By.xpath(`//*[contains(text(),'${affiliate}')]`));
-    browser.executeScript("arguments[0].click();", elm);
-   } 
-
-  async searchClient(clientId) {
-    await waits.sendKeysElem(this.clientSearchField,`${clientId}\n`,);
+    const elm = await browser.findElement(By.css('.btn')).findElement(By.xpath(`//*[contains(text(),'${affiliate}')]`));
+    browser.executeScript('arguments[0].click();', elm);
   }
 
-   async clickClient(clientId) {
-          await waits.clickElem(this.searchAndClickClient(clientId))
+  async searchClient(clientId) {
+    await waits.sendKeysElem(this.clientSearchField, `${clientId}\n`);
+  }
+
+  async clickClient(clientId) {
+    await waits.clickElem(this.searchAndClickClient(clientId));
   }
 }
 
