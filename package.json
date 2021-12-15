@@ -25,6 +25,7 @@
     "node-sessionstorage": "^1.0.0",
     "querystring": "^0.2.1",
     "sinon-chai": "^3.7.0",
+    "superagent-retry-delay": "^2.6.5",
     "yargs": "^17.0.1"
   },
   "devDependencies": {

@@ -1,33 +1,38 @@
 const {
-  Status, BeforeAll, AfterStep, After,
+  Status, BeforeAll, AfterStep, After, Before,
 } = require('@cucumber/cucumber');
-const querystring = require('querystring');
 const { browser } = require('./getBrowser');
 const { clearFile } = require('../commons/environment-setup');
 const {
   takeScreenshot, deleteFiles, takeScreenshotForReporter, killPort,
 } = require('../commons/action');
 const { logTrace } = require('../commons/logs');
-const identityConfig = require('../commons/identity');
 const authorization = require('../commons/authorization');
-
-const decodedClient = decodeURI(querystring.stringify(identityConfig.client));
-const { login } = require('../step-definitions/API/login');
+const globals = require('./globals');
 
 // deleteFiles('logs/UI');
 
 BeforeAll(async function () {
-  const clientLogin = await login(decodedClient);
-  authorization.setToken('clientToken', await clientLogin.token);
+  await globals.getAllTokens();
   await clearFile();
   await deleteFiles('screenshots');
-  await deleteFiles('logs/UI');
+  // await deleteFiles('logs/UI');
   await browser.manage().window().maximize();
 });
 
+// kill port 4444 because sometimes wont run next test
 After(async function () {
   await browser.close();
   await killPort(4444);
+});
+
+Before(async function () {
+  await authorization.setDefaultHeaders({
+    Authorization: `Bearer ${authorization.getToken('userToken')}`,
+    gptw_client_id: '146000003',
+    gptw_affiliate_id: 'BR1',
+    ConnectionId: 'e3e03bc1-35c5-417f-a5c3-ffa9a76d82c9',
+  });
 });
 
 AfterStep(async function (scenario) {

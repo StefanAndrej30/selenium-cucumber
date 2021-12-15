@@ -1,21 +1,10 @@
-@testingApi
-
+@api
 Feature: Api testing
     # API test
 
     Scenario: Api get token
-        Given Get user token
-        When I set headers to be:
-            """
-            {
-                "Authorization": "USER",
-                "gptw_client_id": "146000003",
-                "gptw_affiliate_id": "BR1",
-                "ConnectionId": "e3e03bc1-35c5-417f-a5c3-ffa9a76d82c9"
-            }
-            """
-        And I create new project with random name |status code: 201|
-        And I create a new "ANONYMOUS" survey |status code: 201|
+        Given I create new project with random name |status code: 201|
+        When I create a new "ANONYMOUS" survey |status code: 201|
         And I edit survey: |status code: 200|
             """
             {

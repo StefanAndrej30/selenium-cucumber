@@ -14,6 +14,10 @@ async function takeScreenshot() {
   });
 }
 
+/**
+  * delete specific folder
+  * @param {string} - string for killing specific folder
+  */
 async function deleteFiles(folder) {
   await fsExtra.emptyDirSync(path.join(__dirname, `../../${folder}`));
 }
@@ -24,26 +28,48 @@ async function takeScreenshotForReporter() {
   return decodedImage;
 }
 
+/**
+  * kill selected port
+  * @param {number} port
+  */
 async function killPort(port) {
   await killPortProcess(port);
 }
 
+/**
+  * get local item key
+  * @param {string} key
+  */
 async function getLocalItem(key) {
   return await browser.executeScript(
     `return window.localStorage.getItem("${key}");`,
   );
 }
 
+/**
+  * get session item key
+  * @param {string} key
+  */
 async function getSessionItem(key) {
   return await browser.executeScript(
     `return window.sessionStorage.getItem("${key}");`,
   );
 }
 
+/**
+  * set session storage
+  * @param {string} key - key for object
+  * @param {string} value - value for object
+  */
 async function setLocalStorage(key, value) {
   await browser.executeScript(`window.localStorage.setItem('${key}','${value}')`);
 }
 
+/**
+  * set session storage
+  * @param {string} key - key for object
+  * @param {string} value - value for object
+  */
 async function setSessionStorage(key, value) {
   await browser.executeScript(`window.sessionStorage.setItem('${key}','${value}')`);
 }

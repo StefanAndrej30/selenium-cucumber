@@ -1,4 +1,6 @@
 const { Then } = require('@cucumber/cucumber');
+// const superagent = require('superagent');
+// require('superagent-retry-delay')(superagent);
 const supertest = require('supertest');
 const { httpConfig } = require('../../../commons/httpConfig');
 
@@ -22,10 +24,12 @@ Then('I create a new {string} survey |status code: {int}|', async function (flow
   this.setResponse(
     await request
       .post(`/api/en-US/Project/${this.projectId}/Survey`)
+      .retry(2, 5000)
       .send(postBody)
       .set(authorize.getDefaultHeaders())
-      .expect('Content-Type', /json/)
-      .expect(statusCode),
+      .expect(statusCode)
+      .expect('Content-Type', /json/),
+
   );
   this.surveyId = this.response.body.SurveyId;
   this.clientId = this.response.body.ClientId;
