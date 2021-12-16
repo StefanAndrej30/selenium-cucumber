@@ -67,8 +67,9 @@ class Waits {
 
   async sendKeysElem(locator, input) {
     const retries = 10;
+    const element = await browser.wait(until.elementLocated(locator));
+    await browser.wait(until.elementIsVisible(element));
     try {
-      const element = await browser.findElement(locator);
       await element.sendKeys(input);
       return;
     } catch (err) {
@@ -82,9 +83,10 @@ class Waits {
 
   async WaitForElem(locator) {
     const retries = 10;
+    const element = await browser.wait(until.elementLocated(locator));
+    await browser.wait(until.elementIsVisible(element));
     try {
-      const element = await browser.wait(until.elementLocated(locator));
-      await browser.wait(until.elementIsVisible(element));
+      await element;
       return;
     } catch (err) {
       if (retries === 0) {

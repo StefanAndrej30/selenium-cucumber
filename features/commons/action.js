@@ -16,12 +16,15 @@ async function takeScreenshot() {
 
 /**
   * delete specific folder
-  * @param {string} - string for killing specific folder
+  * @param {string} folder - string for deleting specific folder
   */
 async function deleteFiles(folder) {
   await fsExtra.emptyDirSync(path.join(__dirname, `../../${folder}`));
 }
 
+/**
+  * take screenshot for cucumber reporter
+  */
 async function takeScreenshotForReporter() {
   const image = await browser.takeScreenshot();
   const decodedImage = Buffer.from(image.replace(/^data:image\/(png|gif|jpeg);base64,/, ''), 'base64');
@@ -30,7 +33,7 @@ async function takeScreenshotForReporter() {
 
 /**
   * kill selected port
-  * @param {number} port
+  * @param {number} port - select port which want to kill
   */
 async function killPort(port) {
   await killPortProcess(port);
@@ -38,7 +41,7 @@ async function killPort(port) {
 
 /**
   * get local item key
-  * @param {string} key
+  * @param {string} key - key for object
   */
 async function getLocalItem(key) {
   return await browser.executeScript(
@@ -48,7 +51,7 @@ async function getLocalItem(key) {
 
 /**
   * get session item key
-  * @param {string} key
+  * @param {string} key - ket for object
   */
 async function getSessionItem(key) {
   return await browser.executeScript(

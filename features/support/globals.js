@@ -7,8 +7,8 @@ const httpLogin = require('../step-definitions/API/login');
 class Globals {
   /**
   * set min and max to get random number
-  * @param {number} - min number
-  * @param {number} - max number
+  * @param {number} max - min number
+  * @param {number} min - max number
   */
   getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -16,7 +16,7 @@ class Globals {
 
   /**
   * set sleep in milliseconds
-  * @param {number} - number for milliseconds
+  * @param {number} milliseconds - number for milliseconds
   */
   sleep(milliseconds) {
     const date = Date.now();
@@ -28,8 +28,8 @@ class Globals {
 
   /**
   * set length and chars number
-  * @param {number} - number for length
-  * @param {number} - number for chars number
+  * @param {number} length - number for length
+  * @param {number} chars - number for chars number
   */
   randomString(length, chars) {
     let mask = '';
@@ -42,6 +42,10 @@ class Globals {
     return result;
   }
 
+  /**
+  * Get current time in selected format
+  * @param {string} format - set format for current time
+  */
   timeNow(format = 'LLL SSS') {
     return moment().format(format);
   }

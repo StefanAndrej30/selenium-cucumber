@@ -11,7 +11,7 @@ const authorization = require('../commons/authorization');
 const globals = require('./globals');
 
 // deleteFiles('logs/UI');
-
+// get all tokens, clear env file, delete files in screenshot folder
 BeforeAll(async function () {
   await globals.getAllTokens();
   await clearFile();
@@ -26,6 +26,7 @@ After(async function () {
   await killPort(4444);
 });
 
+// set default headers in before because when you need to change some parametar you can chage once here
 Before(async function () {
   await authorization.setDefaultHeaders({
     Authorization: `Bearer ${authorization.getToken('userToken')}`,
@@ -35,6 +36,7 @@ Before(async function () {
   });
 });
 
+// take screenshot if test failed
 AfterStep(async function (scenario) {
   if (scenario.result.status === Status.FAILED) {
     await logTrace(scenario.result);

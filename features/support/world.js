@@ -17,10 +17,6 @@ class CustomWorld extends World {
   setResponse(res) {
     this.response = res;
   }
-
-  setSessionStorage(sessionStorage) {
-    this.sessionStorage = sessionStorage;
-  }
 }
 
 setWorldConstructor(CustomWorld);
