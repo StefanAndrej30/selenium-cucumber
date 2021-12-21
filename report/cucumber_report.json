@@ -27,7 +27,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1454000000
+              "duration": 1258000000
             }
           },
           {
@@ -40,7 +40,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1124000000
+              "duration": 1483000000
             }
           },
           {
@@ -58,7 +58,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1228000000
+              "duration": 1307000000
             }
           },
           {
@@ -71,7 +71,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1127000000
+              "duration": 938000000
             }
           },
           {
@@ -84,7 +84,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3999000000
+              "duration": 4168000000
             }
           },
           {
@@ -97,7 +97,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 568000000
+              "duration": 550000000
             }
           },
           {
@@ -110,7 +110,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 7206000000
+              "duration": 6712000000
             }
           },
           {
@@ -123,7 +123,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 428000000
+              "duration": 527000000
             }
           },
           {
@@ -136,15 +136,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 898000000
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "result": {
-              "status": "passed",
-              "duration": 371000000
+              "duration": 822000000
             }
           }
         ],
@@ -175,6 +167,6 @@
         "line": 1
       }
     ],
-    "uri": "features/hybrid.feature"
+    "uri": "features/ui/hybrid.feature"
   }
 ]

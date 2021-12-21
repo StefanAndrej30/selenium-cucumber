@@ -1,5 +1,5 @@
 const {
-  Status, BeforeAll, AfterStep, After, Before,
+  Status, BeforeAll, AfterStep, AfterAll, Before,
 } = require('@cucumber/cucumber');
 const { browser } = require('./getBrowser');
 const { clearFile } = require('../commons/environment-setup');
@@ -21,7 +21,7 @@ BeforeAll(async function () {
 });
 
 // kill port 4444 because sometimes wont run next test
-After(async function () {
+AfterAll(async function () {
   await browser.close();
   await killPort(4444);
 });
