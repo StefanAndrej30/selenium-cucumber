@@ -1,4 +1,4 @@
-@hybrid @test
+@hybrid @ui @test
 Feature: Configuration test
 
     Scenario: Upload certification file and expect to not be able to confirm it

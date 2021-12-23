@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node_modules/.bin/selenium-standalone install",
     "UI": "node_modules/.bin/selenium-standalone start & node features/commons/httpConfig.js --env=$ENV | node_modules/.bin/cucumber-js --tags=$TAGS --format=json:report/cucumber_report.json -f @cucumber/pretty-formatter features/*",
-    "UI-Reporter": "node_modules/.bin/selenium-standalone start & node features/commons/httpConfig.js --env=$ENV | node_modules/.bin/cucumber-js --tags=$TAGS --format=json:report/cucumber_report.json -f @cucumber/pretty-formatter features/* || node index.js"
+    "UI-Reporter": "node_modules/.bin/selenium-standalone start & node features/commons/httpConfig.js --env=$ENV | node_modules/.bin/cucumber-js --tags=$TAGS --format=json:report/cucumber_report.json -f @cucumber/pretty-formatter features/* || node index.js",
+    "API": "node features/commons/httpConfig.js --env=$ENV | node_modules/.bin/cucumber-js --tags=$TAGS --format=json:report/cucumber_report.json -f @cucumber/pretty-formatter features/*"
   },
   "keywords": [],
   "author": "",

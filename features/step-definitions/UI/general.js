@@ -1,7 +1,7 @@
 const { Then } = require('@cucumber/cucumber');
 const { expect } = require('chai');
-const { browser } = require('../../support/getBrowser');
 const authorize = require('../../commons/authorization');
+
 const { httpConfig } = require('../../commons/httpConfig');
 
 Then('I expect that url contain {string}', async function (url) {
@@ -23,5 +23,5 @@ Then('I set headers to be:', async function (docString) {
 });
 
 Then('I visit previously created survey with next url {string}', async function (url) {
-  await browser.get(`${httpConfig.baseUrl}/survey/${this.surveyId}/${url}`);
+  await authorize.getBrowser().get(`${httpConfig.baseUrl}/survey/${this.surveyId}/${url}`);
 });

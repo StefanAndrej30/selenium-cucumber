@@ -1,52 +1,52 @@
 /* eslint-disable consistent-return */
 const { By, until } = require('selenium-webdriver');
 const { timeout } = require('./config');
-const { browser } = require('../support/getBrowser');
+const authorize = require('./authorization');
 
 class Waits {
   async waitForScript() {
-    await browser.manage().setTimeouts({ implicit: 10000 });
+    await authorize.getBrowser().manage().setTimeouts({ implicit: 10000 });
   }
 
   async clickByXpath(selector) {
     try {
-      await browser.wait(until.elementLocated(By.xpath(selector)), timeout).click();
+      await authorize.getBrowser().wait(until.elementLocated(By.xpath(selector)), timeout).click();
     } catch (error) {
       console.log(error);
     }
   }
 
   async sendKeysByXpath(selector, input) {
-    await browser.wait(until.elementLocated(By.xpath(selector)), timeout).then(function (elm) {
+    await authorize.getBrowser().wait(until.elementLocated(By.xpath(selector)), timeout).then(function (elm) {
       return elm.sendKeys(input);
     });
   }
 
   async clickByCSS(selector) {
     try {
-      await browser.wait(until.elementLocated(By.css(selector)), timeout).click();
+      await authorize.getBrowser().wait(until.elementLocated(By.css(selector)), timeout).click();
     } catch (error) {
       console.log(error);
     }
   }
 
   async sendKeysByCSS(selector, input) {
-    await browser.wait(until.elementLocated(By.css(selector)), timeout).then(function (elm) {
+    await authorize.getBrowser().wait(until.elementLocated(By.css(selector)), timeout).then(function (elm) {
       return elm.sendKeys(input);
     });
   }
 
   async waitByCSS(selector) {
     try {
-      await browser.wait(until.elementLocated(By.css(selector)), timeout);
+      await authorize.getBrowser().wait(until.elementLocated(By.css(selector)), timeout);
     } catch (error) {
       console.log(error);
     }
   }
 
   async waitForPageToLoad() {
-    await browser.wait(async function () {
-      return browser.executeScript('return document.readyState');
+    await authorize.getBrowser().wait(async function () {
+      return authorize.getBrowser().executeScript('return document.readyState');
     });
   }
 
@@ -67,8 +67,8 @@ class Waits {
 
   async sendKeysElem(locator, input) {
     const retries = 10;
-    const element = await browser.wait(until.elementLocated(locator));
-    await browser.wait(until.elementIsVisible(element));
+    const element = await authorize.getBrowser().wait(until.elementLocated(locator));
+    await authorize.getBrowser().wait(until.elementIsVisible(element));
     try {
       await element.sendKeys(input);
       return;
@@ -76,15 +76,15 @@ class Waits {
       if (retries === 0) {
         throw new Error(`Still not able to send ${locator.toString()} after maximum retries, Error message: ${err.message.toString()}`);
       }
-      await browser.sleep(250);
+      await authorize.getBrowser().sleep(250);
       return this.sendKeysElem(locator, input, retries - 1);
     }
   }
 
   async WaitForElem(locator) {
     const retries = 10;
-    const element = await browser.wait(until.elementLocated(locator));
-    await browser.wait(until.elementIsVisible(element));
+    const element = await authorize.getBrowser().wait(until.elementLocated(locator));
+    await authorize.getBrowser().wait(until.elementIsVisible(element));
     try {
       await element;
       return;
@@ -92,15 +92,15 @@ class Waits {
       if (retries === 0) {
         throw new Error(`Still not able to find ${locator.toString()} after maximum retries, Error message: ${err.message.toString()}`);
       }
-      await browser.sleep(250);
+      await authorize.getBrowser().sleep(250);
       return this.WaitForElem(locator, retries - 1);
     }
   }
 
   async clickElem(locator) {
     const retries = 10;
-    const element = await browser.wait(until.elementLocated(locator));
-    await browser.wait(until.elementIsVisible(element));
+    const element = await authorize.getBrowser().wait(until.elementLocated(locator));
+    await authorize.getBrowser().wait(until.elementIsVisible(element));
     try {
       await element.click();
       return;

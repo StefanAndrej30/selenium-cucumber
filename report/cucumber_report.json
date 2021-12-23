@@ -18,6 +18,14 @@
             }
           },
           {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 395000000
+            }
+          },
+          {
             "arguments": [],
             "keyword": "Given ",
             "line": 6,
@@ -27,7 +35,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1258000000
+              "duration": 1131000000
             }
           },
           {
@@ -40,7 +48,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1483000000
+              "duration": 1239000000
             }
           },
           {
@@ -58,7 +66,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1307000000
+              "duration": 1115000000
             }
           },
           {
@@ -71,7 +79,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 938000000
+              "duration": 916000000
             }
           },
           {
@@ -84,7 +92,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 4168000000
+              "duration": 7022000000
             }
           },
           {
@@ -97,7 +105,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 550000000
+              "duration": 582000000
             }
           },
           {
@@ -110,7 +118,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 6712000000
+              "duration": 6857000000
             }
           },
           {
@@ -123,7 +131,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 527000000
+              "duration": 412000000
             }
           },
           {
@@ -136,13 +144,25 @@
             },
             "result": {
               "status": "passed",
-              "duration": 822000000
+              "duration": 680000000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 110000000
             }
           }
         ],
         "tags": [
           {
             "name": "@hybrid",
+            "line": 1
+          },
+          {
+            "name": "@ui",
             "line": 1
           },
           {
@@ -160,6 +180,10 @@
     "tags": [
       {
         "name": "@hybrid",
+        "line": 1
+      },
+      {
+        "name": "@ui",
         "line": 1
       },
       {

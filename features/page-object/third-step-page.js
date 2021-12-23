@@ -1,8 +1,9 @@
 /* eslint-disable no-return-await */
 const { By } = require('selenium-webdriver');
 const waits = require('../commons/waits');
-const { browser } = require('../support/getBrowser');
+const authorize = require('../commons/authorization');
 
+const browser = authorize.getBrowser();
 class ThirdPage {
   get letsGetStartedButton() { return By.xpath('//*[@ng-click="$close()"]'); }
 
@@ -24,7 +25,7 @@ class ThirdPage {
 
   async checkPlaceholderForSupportEmial(value) {
     await waits.WaitForElem(By.xpath(`//*[@placeholder="${value}"]`));
-    return await browser.findElement(By.xpath(`//*[@placeholder="${value}"]`));
+    return await authorize.getBrowser().findElement(By.xpath(`//*[@placeholder="${value}"]`));
   }
 }
 module.exports = new ThirdPage();

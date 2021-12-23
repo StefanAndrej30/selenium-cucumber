@@ -5,10 +5,10 @@ const fsExtra = require('fs-extra');
 const path = require('path');
 const { killPortProcess } = require('kill-port-process');
 const globals = require('../support/globals');
-const { browser } = require('../support/getBrowser');
+const authorize = require('./authorization');
 
 async function takeScreenshot() {
-  const image = await browser.takeScreenshot();
+  const image = await authorize.getBrowser().takeScreenshot();
   await fs.writeFileSync(path.join(__dirname, '../../screenshots', `${globals.timeNow()} screenshotError.png`), image, 'base64', function (err) {
     console.log(err);
   });
@@ -26,7 +26,7 @@ async function deleteFiles(folder) {
   * take screenshot for cucumber reporter
   */
 async function takeScreenshotForReporter() {
-  const image = await browser.takeScreenshot();
+  const image = await authorize.getBrowser().takeScreenshot();
   const decodedImage = Buffer.from(image.replace(/^data:image\/(png|gif|jpeg);base64,/, ''), 'base64');
   return decodedImage;
 }
@@ -44,7 +44,7 @@ async function killPort(port) {
   * @param {string} key - key for object
   */
 async function getLocalItem(key) {
-  return await browser.executeScript(
+  return await authorize.getBrowser().executeScript(
     `return window.localStorage.getItem("${key}");`,
   );
 }
@@ -54,7 +54,7 @@ async function getLocalItem(key) {
   * @param {string} key - ket for object
   */
 async function getSessionItem(key) {
-  return await browser.executeScript(
+  return await authorize.getBrowser().executeScript(
     `return window.sessionStorage.getItem("${key}");`,
   );
 }
@@ -65,7 +65,7 @@ async function getSessionItem(key) {
   * @param {string} value - value for object
   */
 async function setLocalStorage(key, value) {
-  await browser.executeScript(`window.localStorage.setItem('${key}','${value}')`);
+  await authorize.getBrowser().executeScript(`window.localStorage.setItem('${key}','${value}')`);
 }
 
 /**
@@ -74,9 +74,24 @@ async function setLocalStorage(key, value) {
   * @param {string} value - value for object
   */
 async function setSessionStorage(key, value) {
-  await browser.executeScript(`window.sessionStorage.setItem('${key}','${value}')`);
+  await authorize.getBrowser().executeScript(`window.sessionStorage.setItem('${key}','${value}')`);
+}
+
+/**
+  * set default headers
+  * @param {string} token - set token
+  * @param {string} clinetId - set clientId
+  * @param {string} affiliateId - set affiliateId
+  */
+async function setDefaultHeaders(token, clinetId, affiliateId) {
+  await authorize.setDefaultHeaders({
+    Authorization: `Bearer ${authorize.getToken(token)}`,
+    gptw_client_id: clinetId,
+    gptw_affiliate_id: affiliateId,
+    ConnectionId: 'e3e03bc1-35c5-417f-a5c3-ffa9a76d82c9',
+  });
 }
 
 module.exports = {
-  takeScreenshot, deleteFiles, takeScreenshotForReporter, killPort, getLocalItem, getSessionItem, setSessionStorage, setLocalStorage,
+  takeScreenshot, deleteFiles, takeScreenshotForReporter, killPort, getLocalItem, getSessionItem, setSessionStorage, setLocalStorage, setDefaultHeaders,
 };

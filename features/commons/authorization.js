@@ -1,3 +1,5 @@
+const seleniumWebdriver = require('selenium-webdriver');
+
 class Authorization {
   constructor() {
     this.tokens = {
@@ -5,6 +7,7 @@ class Authorization {
       clientToken: '',
     };
     this.defaultHeaders = {};
+    this.browser;
   }
 
   setToken(token, value) {
@@ -21,6 +24,16 @@ class Authorization {
 
   getDefaultHeaders() {
     return this.defaultHeaders;
+  }
+
+  setBrowser(browserName) {
+    this.browser = new seleniumWebdriver.Builder()
+      .forBrowser(browserName)
+      .build();
+  }
+
+  getBrowser() {
+    return this.browser;
   }
 }
 module.exports = new Authorization();

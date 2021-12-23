@@ -20,4 +20,3 @@ Feature: Api testing
             """
         And I put draft state to be 4 |status code: 200|
         Then I publish survey |status code: 200|
-
