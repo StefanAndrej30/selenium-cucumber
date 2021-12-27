@@ -24,4 +24,4 @@ Feature: Configuration test
         And I visit previously created survey with next url "assessment-design/survey-design"
         And I click OK button
         When I click schedule and messaging modal
-        Then I expect that placeholder "support@example.com" is displayed
+        Then I expect that placeholder "support@example.coms" is displayed

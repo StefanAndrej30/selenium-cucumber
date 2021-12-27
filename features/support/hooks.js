@@ -28,7 +28,6 @@ AfterAll(async function () {
 // set default headers in before because when you need to change some parametar you can chage once here
 Before(async function () {
   await setDefaultHeaders('userToken', '146000003', 'BR1');
-  console.log(await authorization.getDefaultHeaders());
 });
 
 Before({ tags: '@ui' }, async function () {
