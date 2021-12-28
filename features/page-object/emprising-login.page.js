@@ -1,5 +1,5 @@
 const { By } = require('selenium-webdriver');
-const { browser } = require('../support/getBrowser');
+const authorization = require('../commons/authorization');
 const waits = require('../commons/waits');
 
 class LoginPage {
@@ -54,7 +54,7 @@ class LoginPage {
   }
 
   async loginButtonForClient() {
-    await browser.findElement(By.xpath('//button[normalize-space()=\'Login\']')).click();
+    await authorization.getBrowser().findElement(By.xpath('//button[normalize-space()=\'Login\']')).click();
   }
 
   /**
@@ -102,7 +102,7 @@ class LoginPage {
   }
 
   async open(url = '') {
-    await browser.get(url);
+    await authorization.getBrowser().get(url);
   }
 }
 module.exports = new LoginPage();

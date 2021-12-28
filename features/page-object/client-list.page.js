@@ -1,5 +1,5 @@
 const { By } = require('selenium-webdriver');
-const { browser } = require('../support/getBrowser');
+const authorization = require('../commons/authorization');
 const waits = require('../commons/waits');
 
 class ClientListPage {
@@ -31,7 +31,7 @@ class ClientListPage {
 
   async selectAffiliate(affiliate) {
     await waits.clickByCSS(this.affiliateIcon);
-    const elm = await browser.findElement(By.css('.btn')).findElement(By.xpath(`//*[contains(text(),'${affiliate}')]`));
+    const elm = await authorization.getBrowser().findElement(By.css('.btn')).findElement(By.xpath(`//*[contains(text(),'${affiliate}')]`));
     browser.executeScript('arguments[0].click();', elm);
   }
 

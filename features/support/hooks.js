@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+// SELENIUM_BROWSER=safari node example/google_search - comand line
 const {
   Status, BeforeAll, AfterStep, AfterAll, Before, After,
 } = require('@cucumber/cucumber');

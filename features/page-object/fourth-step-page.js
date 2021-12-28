@@ -1,6 +1,6 @@
 const { By } = require('selenium-webdriver');
 const { expect } = require('chai');
-const { browser } = require('../support/getBrowser');
+const authorization = require('../commons/authorization');
 const waits = require('../commons/waits');
 
 class FourtStep {
@@ -10,7 +10,7 @@ class FourtStep {
 
   get confirmButton() { return By.xpath('//*[@ng-click="ctrl.confirmClickHandler()"]'); }
 
-  get certificationUpload() { return browser.findElement(By.xpath('//*[@id="fileUploadBtn"]/input')); }
+  get certificationUpload() { return authorization.getBrowser().findElement(By.xpath('//*[@id="fileUploadBtn"]/input')); }
 
   get confirmUploadButton() { return By.xpath('//*[@ng-click="ctrl.uploadEmails()"]'); }
 
@@ -36,7 +36,7 @@ class FourtStep {
 
   async getAnalystMessage(msg) {
     await waits.WaitForElem(this.analystMessageForCertiifaction);
-    expect(await browser.findElement(this.analystMessageForCertiifaction).getText()).to.contain(msg);
+    expect(await authorization.getBrowser().findElement(this.analystMessageForCertiifaction).getText()).to.contain(msg);
   }
 }
 module.exports = new FourtStep();

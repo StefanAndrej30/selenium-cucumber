@@ -1,12 +1,12 @@
 /* eslint-disable no-undef */
 const path = require('path');
-const { browser } = require('../support/getBrowser');
+const authorization = require('./authorization');
 
 const Files = {
 
   async uploadFile(inputField, file) {
     const fileUpload = inputField;
-    await browser.executeScript(
+    await authorization.getBrowser().executeScript(
       // assign style to elem in the browser
       'arguments[0].style.visibility = \'visible\'; arguments[0].style.height = \'100px\'; arguments[0].style.width = \'100px\'; arguments[0].style.opacity = 1',
 

@@ -1,7 +1,7 @@
 const { Given, When } = require('@cucumber/cucumber');
 const { By } = require('selenium-webdriver');
 const { expect } = require('chai');
-const { browser } = require('../../support/getBrowser');
+const authorization = require('../../commons/authorization');
 const waits = require('../../commons/waits');
 const fourthStepPage = require('../../page-object/fourth-step-page');
 const upload = require('../../commons/uploadFile');
@@ -36,7 +36,7 @@ When('I choose {string} type of upload and uplaod {string} file', async function
 
 When('I expect that confirm upload button is not clickable', async function () {
   await waits.WaitForElem(fourthStepPage.confirmUploadButton);
-  const elm = await browser.findElement(fourthStepPage.confirmUploadButton);
+  const elm = await authorization.getBrowser().findElement(fourthStepPage.confirmUploadButton);
   expect(await elm.isEnabled()).to.be.false;
 });
 

@@ -50,21 +50,6 @@ class Waits {
     });
   }
 
-  // async clickElem (locator) {
-  // let retries = 10;
-  // try {
-  // const element =  await browser.findElement(locator)
-  // // await browser.executeScript("arguments[0].click();", element);
-  // await element.click();
-  // } catch (err) {
-  // if (retries === 0) {
-  // throw new Error(`Still not able to click ${locator.toString()} after maximum retries, Error message: ${err.message.toString()}`)
-  // }
-  // await browser.sleep(250)
-  // return this.clickElem(locator, retries - 1)
-  // }
-  //   }
-
   async sendKeysElem(locator, input) {
     const retries = 10;
     const element = await authorize.getBrowser().wait(until.elementLocated(locator));

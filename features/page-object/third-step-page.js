@@ -3,7 +3,6 @@ const { By } = require('selenium-webdriver');
 const waits = require('../commons/waits');
 const authorize = require('../commons/authorization');
 
-const browser = authorize.getBrowser();
 class ThirdPage {
   get letsGetStartedButton() { return By.xpath('//*[@ng-click="$close()"]'); }
 
