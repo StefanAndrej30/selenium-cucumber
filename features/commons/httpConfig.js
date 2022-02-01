@@ -16,4 +16,6 @@ if (env === 'ltd') {
   httpConfig.oidc = 'https://dev-login.greatplacetowork.com/identity:GptwCMP';
 }
 
+console.log(`CAO JA SAM ${env}`);
+
 module.exports = { httpConfig };

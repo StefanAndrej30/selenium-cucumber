@@ -1,4 +1,4 @@
-@hybrid @ui @test
+@hybrid @ui
 Feature: Configuration test
 
     Scenario: Upload certification file and expect to not be able to confirm it
@@ -18,7 +18,7 @@ Feature: Configuration test
                 "NumberOfInvites": 30
             }
             """
-        And I put draft state to be 2 |status code: 200|
+        And I put draft state to be "2" |status code: 200|
         #UI
         And I set token in session storage to "clientToken"
         And I visit previously created survey with next url "assessment-design/survey-design"
