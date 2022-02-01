@@ -4,8 +4,12 @@ const fs = require('fs-extra');
 const fsExtra = require('fs-extra');
 const path = require('path');
 const { killPortProcess } = require('kill-port-process');
+const supertest = require('supertest');
 const globals = require('../support/globals');
 const authorize = require('./authorization');
+const { httpConfig } = require('./httpConfig');
+
+const request = supertest(httpConfig.emprisingBaseUrl);
 
 async function takeScreenshot() {
   const image = await authorize.getBrowser().takeScreenshot();
@@ -83,15 +87,48 @@ async function setSessionStorage(key, value) {
   * @param {string} clinetId - set clientId
   * @param {string} affiliateId - set affiliateId
   */
-async function setDefaultHeaders(token, clinetId, affiliateId) {
+async function setDefaultHeaders(token, clientId, affiliateId) {
   await authorize.setDefaultHeaders({
     Authorization: `Bearer ${authorize.getToken(token)}`,
-    gptw_client_id: clinetId,
+    gptw_client_id: clientId,
     gptw_affiliate_id: affiliateId,
     ConnectionId: 'e3e03bc1-35c5-417f-a5c3-ffa9a76d82c9',
   });
 }
 
+/**
+  * uplaod file
+  * @param {string} url - set api path
+  * @param {string} filePath - set path to file
+  * @param {number} statusCode - set status code of the request
+  */
+
+async function uplaodFile(url, filePath, statusCode) {
+  const absolutePath = path.resolve(__dirname, filePath);
+  const fileName = path.parse(absolutePath).base;
+  const fileToUplaod = absolutePath;
+
+  await request
+    .post(`${url}`)
+    .set(authorize.getDefaultHeaders())
+    .field('flowChunkNumber', '1')
+    .field('flowTotalChunks', '1')
+    .field('flowIdentifier', '30cdf696-3b87-bd17-a565-71547cce121b')
+    .field('flowFilename', `${fileName}`)
+    .field('file', fs.createReadStream(`${fileToUplaod}`), `${fileName}`)
+    .attach('file', `${fileToUplaod}`)
+    .expect(statusCode);
+}
+
 module.exports = {
-  takeScreenshot, deleteFiles, takeScreenshotForReporter, killPort, getLocalItem, getSessionItem, setSessionStorage, setLocalStorage, setDefaultHeaders,
+  takeScreenshot,
+  deleteFiles,
+  takeScreenshotForReporter,
+  killPort,
+  getLocalItem,
+  getSessionItem,
+  setSessionStorage,
+  setLocalStorage,
+  setDefaultHeaders,
+  uplaodFile,
 };

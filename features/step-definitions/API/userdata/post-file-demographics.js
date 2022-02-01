@@ -1,14 +1,20 @@
 const { Then } = require('@cucumber/cucumber');
+
 const supertest = require('supertest');
 const { httpConfig } = require('../../../commons/httpConfig');
 
 const request = supertest(httpConfig.emprisingBaseUrl);
 const authorize = require('../../../commons/authorization');
 
-Then('I put draft state to be {string} |status code: {int}|', async function (draftState, statusCode) {
+Then('I post demographics from edf file |status code: {int}|', async function (statusCode) {
+  const postBody = {
+    'demographics':
+            this.edfColumns,
+    'skipLoader': true,
+  };
   this.setResponse(await request
-    .patch(`/api/en-US/Project/${this.projectId}/Survey/${this.surveyId}/DraftState?draftState=${draftState}`)
+    .post(`/api/en-US/Project/${this.projectId}/Survey/${this.surveyId}/File/Demographics`)
     .set(authorize.getDefaultHeaders())
-    .expect('Content-Type', /json/)
+    .send(postBody)
     .expect(statusCode));
 });
