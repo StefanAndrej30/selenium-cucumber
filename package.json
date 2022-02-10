@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node_modules/.bin/selenium-standalone install",
     "UI": "node_modules/.bin/selenium-standalone start & node features/commons/httpConfig.js --env=$ENV | node_modules/.bin/cucumber-js --tags=$TAGS --format=json:report/cucumber_report.json -f @cucumber/pretty-formatter features/*",
+    "UI2": "node_modules/.bin/selenium-standalone start & node features/commons/authorization.js --browser=$BROWSER & node features/commons/httpConfig.js --env=$ENV & node_modules/.bin/cucumber-js --format=json:report/cucumber_report.json -f @cucumber/pretty-formatter features/*",
     "UI-Reporter": "node_modules/.bin/selenium-standalone start & node features/commons/httpConfig.js --env=$ENV | node_modules/.bin/cucumber-js --tags=$TAGS --format=json:report/cucumber_report.json -f @cucumber/pretty-formatter features/* || node index.js",
     "API": "node features/commons/httpConfig.js --env=$ENV | node_modules/.bin/cucumber-js --tags=$TAGS --format=json:report/cucumber_report.json -f @cucumber/pretty-formatter features/*"
   },
@@ -14,7 +15,7 @@
   "license": "ISC",
   "dependencies": {
     "allure-cucumberjs": "^2.0.0-beta.13",
-    "chromedriver": "^96.0.0",
+    "chromedriver": "^98.0.0",
     "concurrently": "^6.3.0",
     "cucumberjs-chromedriver": "^0.3.1",
     "express": "^4.17.1",
@@ -28,7 +29,10 @@
     "node-sessionstorage": "^1.0.0",
     "querystring": "^0.2.1",
     "sinon-chai": "^3.7.0",
+    "superagent-charset": "^1.2.0",
     "superagent-retry-delay": "^2.6.5",
+    "xlsx": "^0.18.0",
+    "xlsx-parse-stream": "^1.0.3",
     "yargs": "^17.0.1"
   },
   "devDependencies": {

@@ -1,4 +1,4 @@
-@api @test
+@api @upload
 Feature: Api testing
     # API test
 

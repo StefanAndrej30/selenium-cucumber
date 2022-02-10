@@ -1,6 +1,7 @@
 const { Then } = require('@cucumber/cucumber');
 const { expect } = require('chai');
 const authorize = require('../../commons/authorization');
+const globals = require('../../support/globals');
 
 const { httpConfig } = require('../../commons/httpConfig');
 
@@ -24,4 +25,8 @@ Then('I set headers to be:', async function (docString) {
 
 Then('I visit previously created survey with next url {string}', async function (url) {
   await authorize.getBrowser().get(`${httpConfig.baseUrl}/survey/${this.surveyId}/${url}`);
+});
+
+Then('I wait for file {string} to be present', async function (file) {
+  await globals.waitForFileToBePresent(`../../tmp/${file}`);
 });

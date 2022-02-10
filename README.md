@@ -20,6 +20,8 @@ Selelenium webdriver with node.js and cucumber for automating UI test
 ENV=dev TAGS=@tagName npm run UI
 ## qa
 ENV=qa TAGS=@tagName npm run UI
+* for UI scirpt without --env=$ENV in packacge.json
+ENV=dev npm run UI2 -- --tags @tagName
 ## ltd
 ENV=ltd TAGS=@tagName npm run UI
 ## prod
