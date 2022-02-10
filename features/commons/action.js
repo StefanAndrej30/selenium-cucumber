@@ -1,7 +1,7 @@
+/* eslint-disable no-promise-executor-return */
 /* eslint-disable no-return-await */
 /* eslint-disable no-undef */
 const fs = require('fs-extra');
-const fsExtra = require('fs-extra');
 const path = require('path');
 const { killPortProcess } = require('kill-port-process');
 const supertest = require('supertest');
@@ -23,7 +23,7 @@ async function takeScreenshot() {
   * @param {string} folder - string for deleting specific folder
   */
 async function deleteFiles(folder) {
-  await fsExtra.emptyDirSync(path.join(__dirname, `../../${folder}`));
+  await fs.emptyDirSync(path.join(__dirname, `../../${folder}`));
 }
 
 /**
@@ -89,6 +89,7 @@ async function setSessionStorage(key, value) {
   */
 async function setDefaultHeaders(token, clientId, affiliateId) {
   await authorize.setDefaultHeaders({
+    'Content-type': 'application/json; charset=utf-8',
     Authorization: `Bearer ${authorize.getToken(token)}`,
     gptw_client_id: clientId,
     gptw_affiliate_id: affiliateId,
@@ -120,6 +121,22 @@ async function uplaodFile(url, filePath, statusCode) {
     .expect(statusCode);
 }
 
+/**
+  * download file
+  * @param {string} url - set api path
+  * @param {string} filePath - set path to file
+  */
+
+async function downloadFile(url, filePath) {
+  const absolutePath = path.resolve(__dirname, filePath);
+  const stream = fs.createWriteStream(absolutePath);
+
+  await new Promise((resolve) => request
+    .get(url)
+    .pipe(stream)
+    .on('finish', resolve));
+}
+
 module.exports = {
   takeScreenshot,
   deleteFiles,
@@ -131,4 +148,5 @@ module.exports = {
   setLocalStorage,
   setDefaultHeaders,
   uplaodFile,
+  downloadFile,
 };

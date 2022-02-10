@@ -1,4 +1,3 @@
-@ui
 Feature: UI test
 
 

@@ -35,4 +35,5 @@ Then('I create a new {string} survey |status code: {int}|', async function (flow
   this.clientId = this.response.body.ClientId;
   this.surveyName = this.response.body.Name;
   this.projectId = this.response.body.ProjectID;
+  this.affiliateId = this.response.body.AffiliateId;
 });
