@@ -1,5 +1,5 @@
 @api @test @download
-Feature: Api testing
+Feature: Api testing new test
     # API test
 
     Scenario:Api get token
@@ -9,7 +9,7 @@ Feature: Api testing
             """
             {
                 "IsAnonymous": true,
-                "StartDate": null,
+                "StartDate": null,ß
                 "CloseDate": "2040-11-27T18:00:00",
                 "SurveyFlow": 1,
                 "isToday": true,
