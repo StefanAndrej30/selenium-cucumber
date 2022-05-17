@@ -1,4 +1,6 @@
 node_modules
 /allure-report
 /logs/UI
-/features/commons/*
+/commons/identity.js
+/reports
+/logs/API

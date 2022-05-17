@@ -8,14 +8,18 @@ Feature: Api testing
         And I edit survey: |status code: 200|
             """
             {
-                "IsAnonymous": true,
-                "StartDate": null,
-                "CloseDate": "2040-11-27T18:00:00",
                 "SurveyFlow": 1,
-                "isToday": true,
                 "QCertify": false,
                 "QCountry": false,
                 "NumberOfInvites": 30
+            }
+            """
+        And I schdedule survey: |status code: 200|
+            """
+            {
+                "startDate": null,
+                "closeDate": "2035-04-16T18:00:00.000",
+                "isToday": true
             }
             """
         And I put draft state to be "3" |status code: 200|

@@ -2,8 +2,8 @@ const reporter = require('cucumber-html-reporter');
 
 const options = {
   theme: 'hierarchy',
-  jsonFile: 'report/./cucumber_report.json',
-  output: 'report/./cucumber_report.html',
+  jsonFile: 'reports/API/./cucumber_report.json',
+  output: 'reports/API/./cucumber_report.html',
   reportSuiteAsScenarios: true,
   scenarioTimestamp: true,
   launchReport: true,

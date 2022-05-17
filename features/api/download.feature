@@ -8,20 +8,24 @@ Feature: Api testing new test
         And I edit survey: |status code: 200|
             """
             {
-                "IsAnonymous": true,
-                "StartDate": null,ß
-                "CloseDate": "2040-11-27T18:00:00",
                 "SurveyFlow": 1,
-                "isToday": true,
                 "QCertify": false,
                 "QCountry": false,
                 "NumberOfInvites": 30
             }
             """
+        And I schdedule survey: |status code: 200|
+            """
+            {
+                "startDate": null,
+                "closeDate": "2035-04-16T18:00:00.000",
+                "isToday": true
+            }
+            """
         And I put draft state to be "3" |status code: 200|
         And I download "YYY-template.xlsx" file
         And I wait for file "YYY-template.xlsx" to be present
-        And Check file:
+        And Check file "YYY-template.xlsx":
             """
             [
                 {
@@ -111,6 +115,8 @@ Feature: Api testing new test
             ]
             """
 
+#     And I download "YYY-template.xlsx" file
+# And I wait for file "YYY-template.xlsx" to be present
 
 # Scenario Outline: Check file
 #     And Check file <SHEETNAME> <CELL> <VALUE>
@@ -119,4 +125,3 @@ Feature: Api testing new test
 #         | "Template" | "A2"  |  | "test01@emailaddress.com"                                                                                      |
 #         | "Template" | "C6"  |  | "5 years or older"                                                                                            |
 #         | "Template" | "B13" |  | "Executive/C-Level Leader (Highest level leaders; CEO/President and the C-suite executives who report to CEO)" |
-
