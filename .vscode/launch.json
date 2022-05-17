@@ -10,7 +10,7 @@
             "args": [
                 "${workspaceFolder}/features/*.feature",
                 "--require",
-                "${workspaceFolder}/step-definitions/",
+                "${workspaceFolder}/stepDefinitions/",
                 "--env",
                 "qa"
             ]

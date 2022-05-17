@@ -1,9 +1,9 @@
 {
     "cucumberautocomplete.steps": [
-        "features/step-definitions/UI/*.js",
-        "features/step-definitions/**/*.js"
+        "stepDefinitions/UI/**/*.js",
+        "stepDefinitions/API/**/*.js"
     ],
-    "cucumberautocomplete.syncfeatures": "/features/*",
+    "cucumberautocomplete.syncfeatures": "/features/**/*.feature",
     "cucumberautocomplete.strictGherkinCompletion": true
 }
 
