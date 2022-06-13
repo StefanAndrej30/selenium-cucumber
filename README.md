@@ -30,6 +30,9 @@ ENV=qa npm run API -- --tags @tagName
 ## UI-REMOTE
 ENV=qa npm run UI-REMOTE --conf=wdio_confs/wdio.grid.conf.js -- --tags=@tagName
 
+## UI-VISUAL
+ENV=qa npm run UI-VISUAL --conf=wdio_confs/wdio.visual.conf.js -- --tags=@visual
+
 - To run with cucumber html reporter
 ENV=env TAGS=@tagName npm run UI-Reporter and after test reporter will be generated automaticly
 

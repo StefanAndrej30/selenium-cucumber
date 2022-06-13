@@ -4,7 +4,7 @@
     "elements": [
       {
         "description": "",
-        "id": "api-testing;api-get-token",
+        "id": "api-testing-new-test;api-get-token",
         "keyword": "Scenario",
         "line": 5,
         "name": "Api get token",
@@ -14,7 +14,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 0
+              "duration": 1000000
             }
           },
           {
@@ -27,7 +27,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1003000000
+              "duration": 1382000000
             }
           },
           {
@@ -40,7 +40,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1143000000
+              "duration": 1116000000
             }
           },
           {
@@ -58,7 +58,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 938000000
+              "duration": 932000000
             }
           },
           {
@@ -76,7 +76,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1094000000
+              "duration": 1116000000
             }
           },
           {
@@ -89,7 +89,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 881000000
+              "duration": 921000000
             }
           },
           {
@@ -102,7 +102,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 921000000
+              "duration": 880000000
             }
           },
           {
@@ -111,11 +111,11 @@
             "line": 27,
             "name": "I wait for file \"YYY-template.xlsx\" to be present",
             "match": {
-              "location": "stepDefinitions/UI/general.js:31"
+              "location": "stepDefinitions/API/general.js:20"
             },
             "result": {
               "status": "passed",
-              "duration": 3000000
+              "duration": 2000000
             }
           },
           {
@@ -133,7 +133,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 35000000
+              "duration": 33000000
             }
           }
         ],
@@ -154,10 +154,10 @@
         "type": "scenario"
       }
     ],
-    "id": "api-testing",
+    "id": "api-testing-new-test",
     "line": 2,
     "keyword": "Feature",
-    "name": "Api testing",
+    "name": "Api testing new test",
     "tags": [
       {
         "name": "@api",

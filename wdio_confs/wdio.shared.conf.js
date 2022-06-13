@@ -2,8 +2,9 @@
 /* eslint-disable global-require */
 const { argv } = require('yargs');
 const { clearFile } = require('../commons/environment-setup');
+const visual = require('../commons/visual');
 
-const defaultTimeoutInterval = process.env.DEBUG ? (60 * 60 * 500) : 90000;
+const defaultTimeoutInterval = process.env.DEBUG ? (60 * 60 * 500) : 120000;
 
 exports.config = {
   //
@@ -104,7 +105,7 @@ exports.config = {
   baseUrl: 'http://localhost',
   //
   // Default timeout for all waitFor* commands.
-  waitforTimeout: 10000,
+  waitforTimeout: 30000,
   //
   // Default timeout in milliseconds for request
   // if browser driver or grid doesn't send response
@@ -117,8 +118,7 @@ exports.config = {
   // Services take over a specific job you don't want to take care of. They enhance
   // your test setup with almost no effort. Unlike plugins, they don't add new
   // commands. Instead, they hook themselves up into the test process.
-  services: ['selenium-standalone'],
-
+  // services: ['selenium-standalone'],
   // Framework you want to run your specs with.
   // The following are supported: Mocha, Jasmine, and Cucumber
   // see also: https://webdriver.io/docs/frameworks
@@ -230,11 +230,16 @@ exports.config = {
       * @param {Object}         browser      instance of created browser/device session
       */
   async before() {
+    require('expect-webdriverio');
+    global.wdioExpect = global.expect;
+    const chai = require('chai');
+    global.expect = chai.expect;
     const { getAllTokens } = require('../support/globals');
-    const { deleteFiles } = require('../commons/action');
+    const { deleteAllNecessaryFiles } = require('../support/globals');
     await getAllTokens();
-    await deleteFiles('./reports/UI/allure-results');
+    await deleteAllNecessaryFiles();
   },
+
   /**
       * Runs before a WebdriverIO command gets executed.
       * @param {String} commandName hook command name
@@ -268,8 +273,10 @@ exports.config = {
       * @param {ITestCaseHookParameter} world    world object containing information on pickle and test step
       * @param {Object}                 context  Cucumber World object
       */
-  beforeScenario() {
-    browser.setWindowSize(1920, 1080);
+  async beforeScenario() {
+    await browser.reloadSession();
+    await browser.refresh();
+    await browser.setWindowSize(1440, 900);
   },
   /**
       *
@@ -292,7 +299,7 @@ exports.config = {
       * @param {number}             result.duration  duration of scenario in milliseconds
       * @param {Object}             context          Cucumber World object
       */
-  afterStep(test, scenario, { error, duration, passed }) {
+  async afterStep(test, scenario, { error, duration, passed }) {
     if (error) {
       browser.takeScreenshot();
     }
@@ -307,8 +314,14 @@ exports.config = {
       * @param {number}                 result.duration  duration of scenario in milliseconds
       * @param {Object}                 context          Cucumber World object
       */
-  // afterScenario: function (world, result, context) {
-  // },
+  async afterScenario(scenario, result) {
+    for (let i = 0; i < scenario.pickle.tags.length; i += 1) {
+      if (scenario.pickle.tags[i].name === '@visual' && result.passed !== true) {
+        await visual.createReporterWithDiffrences();
+        console.log(`MOJ_TEST:${result.passed}`);
+      }
+    }
+  },
   /**
       *
       * Runs after a Cucumber Feature.
@@ -334,7 +347,7 @@ exports.config = {
       * @param {Array.<Object>} capabilities list of capabilities details
       * @param {Array.<String>} specs List of spec file paths that ran
       */
-  // after: function (result, capabilities, specs) {
+  // after() {
   // },
   /**
       * Gets executed right after terminating the webdriver session.
@@ -342,7 +355,7 @@ exports.config = {
       * @param {Array.<Object>} capabilities list of capabilities details
       * @param {Array.<String>} specs List of spec file paths that ran
       */
-  // afterSession: function (config, capabilities, specs) {
+  // afterSession(config, capabilities, specs) {
   // },
   /**
       * Gets executed after all workers got shut down and the process is about to exit. An error
@@ -362,7 +375,7 @@ exports.config = {
   // onReload: function(oldSessionId, newSessionId) {
   // }
 
-  onComplete() {
-    clearFile();
+  async onComplete() {
+    await clearFile();
   },
 };
