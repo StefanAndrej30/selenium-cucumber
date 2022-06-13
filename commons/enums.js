@@ -13,4 +13,11 @@ const surveyFlows = {
   'YYY': 28,
 };
 
-module.exports = { certificationSurveyTypes, surveyFlows };
+const resolutions = {
+  '4k': [3840, 2160],
+  '2k': [2560, 1440],
+  'FHD': [1920, 1080],
+  'HD': [1280, 720],
+};
+
+module.exports = { certificationSurveyTypes, surveyFlows, resolutions };

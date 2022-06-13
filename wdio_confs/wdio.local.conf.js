@@ -8,9 +8,9 @@ exports.config = {
       {
         maxInstances: 1,
         browserName: 'chrome',
-        'goog:chromeOptions': {
-          // args: ['-headless'],
-        },
+        // 'goog:chromeOptions': {
+        //   // args: ['-headless'],
+        // },
       },
       // {
       //   maxInstances: 5,

@@ -1,57 +1,63 @@
-const { Then } = require('@cucumber/cucumber');
+const { Then, Given, When } = require('@cucumber/cucumber');
 const { expect } = require('chai');
 const authorize = require('../../commons/authorization');
-const globals = require('../../support/globals');
-
+const { resolutions } = require('../../commons/enums');
 const { httpConfig } = require('../../commons/httpConfig');
+const visual = require('../../commons/visual');
 
 Then('I expect that url contain {string}', async function (url) {
   expect(await authorize.getBrowser().getCurrentUrl()).to.contain(url);
 });
 
-Then('I set headers to be:', async function (docString) {
-  const defaultHeaders = JSON.parse(docString);
-
-  switch (defaultHeaders.Authorization) {
-    case 'USER':
-      defaultHeaders.Authorization = `Bearer ${authorize.getToken('userToken')}`;
-      break;
-    default:
-      defaultHeaders.Authorization = `Bearer ${authorize.getToken('userToken')}`;
-  }
-
-  authorize.setDefaultHeaders(await defaultHeaders);
-});
-
 Then('I visit previously created survey with next url {string}', async function (url) {
   await browser.url(`${httpConfig.baseUrl}/survey/${this.surveyId}/${url}`);
+
   // await browser.debug();
 });
 
-Then('I wait for file {string} to be present', async function (file) {
-  await globals.waitForFileToBePresent(`../tmp/${file}`);
+Given('I visit {string}', async function (url) {
+  await browser.url(url);
 });
 
-Then('I create {string} file in {string} sheet with next data:', async function (file, sheetName, docString) {
-  //   Given I create "Test.xlsx" file in "Test_Moj" sheet with next data:
-  //   """
-  // data
-  //   [
-  //       {
-  //           "name": "Mirko",
-  //           "job": "car"
-  //       },
-  //       {
-  //           "name": "Jovan",
-  //           "job": "plane"
-  //       },
-  //       {
-  //           "name": "Mitar",
-  //           "job": "water"
-  //       }
-  //   ]
-  // """
+Given('I set resolution {string}', async function (resolutionName) {
+  await browser.setWindowSize(resolutions[resolutionName][0], resolutions[resolutionName][1]);
+});
 
-  const data = JSON.parse(docString);
-  await globals.createXlsxFile(`../../tmp/${file}`, data, sheetName);
+Given('I open the browser', async function () {
+  expect(await browser.sessionId, 'The browser has not started!').to.be.ok;
+});
+
+When('I debug', async function () {
+  await browser.debug();
+});
+
+When('Save in screen mode {string} screenshot', async function (screenShootName) {
+  await visual.setScreenshotName(screenShootName);
+  await browser.saveScreen(visual.screenshotName);
+});
+
+When('Save in full screen mode {string} screenshot', async function (screenShootName) {
+  await visual.setScreenshotName(screenShootName);
+  await browser.saveFullPageScreen(visual.screenshotName);
+});
+
+When('Save in save tabbable mode {string} screenshot', async function (screenShootName) {
+  await visual.setScreenshotName(screenShootName);
+  await browser.saveTabbablePage(visual.screenshotName);
+});
+
+Then('should compare previously saved screen with a baseline', async function () {
+  expect(await browser.checkScreen(visual.screenshotName, { ignoreNothing: false })).to.not.above(1);
+});
+
+Then('should compare previously saved screen in full screean page mode with a baseline', async function () {
+  expect(await browser.checkFullPageScreen(visual.screenshotName, { ignoreNothing: false })).to.not.above(1);
+});
+
+Then('should compare previously saved tabbable screenshots with a baseline', async function () {
+  expect(await browser.checkTabbablePage(visual.screenshotName)).to.not.above(1);
+});
+
+Then('I wait {int}ms', async function (milliseconds) {
+  await browser.pause(milliseconds);
 });

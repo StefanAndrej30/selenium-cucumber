@@ -16,8 +16,8 @@ const globals = require('../support/globals');
 // deleteFiles('logs/UI');
 // get all tokens, clear env file, delete files in screenshot folder
 BeforeAll(async function () {
-  await globals.getAllTokens();
   await clearFile();
+  await globals.getAllTokens();
 });
 
 // kill port 4444 because sometimes wont run next test

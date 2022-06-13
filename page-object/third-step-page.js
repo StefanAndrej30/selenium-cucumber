@@ -58,130 +58,128 @@ class ThirdStepPage {
 
   get datePickerBody() { return $('.bs-datepicker-body'); }
 
-  clickDesignGuidanceModalContentOk() {
-    this.modalContentOk.waitForClickable();
-    this.modalContentOk.click();
+  get takeSurveyHereButton() { return $('.button-container'); }
+
+  async clickDesignGuidanceModalContentOk() {
+    await this.modalContentOk.waitForClickable();
+    await this.modalContentOk.click();
   }
 
-  clickScheduleAndMessagingModal() {
-    this.scheduleAndMessagingModal.waitForClickable();
-    this.scheduleAndMessagingModal.click();
+  async clickScheduleAndMessagingModal() {
+    await this.scheduleAndMessagingModal.waitForClickable();
+    await this.scheduleAndMessagingModal.click();
   }
 
-  clickScheduleAndMessagingModalSave() {
-    this.scheduleAndMessagingModalSave.click();
+  async clickScheduleAndMessagingModalSave() {
+    await this.scheduleAndMessagingModalSave.click();
   }
 
-  clickUponApproval() {
-    if (!this.startDateDropdown.isClickable()) {
-      this.startDateDropdown.waitForClickable();
-    }
-    this.startDateDropdown.click();
-    this.uponApproval.click();
+  async clickUponApproval() {
+    await this.startDateDropdown.waitForClickable();
+    await this.startDateDropdown.click();
+    await this.uponApproval.click();
   }
 
-  clickAnonymousFlowCheckbox() {
-    this.anonymousFlowCheckbox.click();
+  async clickAnonymousFlowCheckbox() {
+    await this.anonymousFlowCheckbox.click();
   }
 
-  enterSupportEmail(email) {
-    this.supportEmail.setValue(email);
+  async enterSupportEmail(email) {
+    await this.supportEmail.setValue(email);
   }
 
-  checkplaceHolderSupportEmail(example) {
-    browser.waitUntil(() => $('.schedule-messaging.mt').isDisplayed());
-    return $(`//*[@placeholder="${example}"]`);
+  async checkplaceHolderSupportEmail(example) {
+    const scheduleMessagingModal = await $('.schedule-messaging.mt');
+    await scheduleMessagingModal.waitUntil(() => scheduleMessagingModal.isDisplayed());
+    const placeHolder = await $(`//*[@placeholder="${example}"]`).isDisplayed();
+    expect(placeHolder).to.be.true;
   }
 
-  clickModalContentLetsGetStarted() {
-    if (!this.modalContentLetsGetStarted.isClickable()) {
-      this.modalContentLetsGetStarted.waitForClickable();
-    }
-    this.modalContentLetsGetStarted.click();
+  async clickModalContentLetsGetStarted() {
+    await this.modalContentLetsGetStarted.waitForClickable();
+    await this.modalContentLetsGetStarted.click();
   }
 
-  clickNextButton() {
-    this.nextButton.waitForClickable();
-    this.nextButton.click();
+  async clickNextButton() {
+    await this.nextButton.waitForClickable();
+    await this.nextButton.click();
   }
 
-  checkDay(day) {
-    this.datePickerBody.waitForDisplayed();
-    for (let i = 0; i < this.datePickerBody.$$(`span=${day}`).length; i += 1) {
-      if (this.datePickerBody.$$(`span=${day}`)[i].getAttribute('class') !== 'disabled is-other-month') {
-        this.datePickerBody.$$(`span=${day}`)[i].click();
+  async checkDay(day) {
+    await this.datePickerBody.waitForDisplayed();
+    for (let i = 0; i < await this.datePickerBody.$$(`span=${day}`).length; i += 1) {
+      if (await this.datePickerBody.$$(`span=${day}`)[i].getAttribute('class') !== 'disabled is-other-month') {
+        await this.datePickerBody.$$(`span=${day}`)[i].click();
         break;
       }
     }
   }
 
-  setDate(year, month, arrowNext = false, day) {
-    $(`span=${globals.getCurrentYear()}`).click();
-    $(`span=${year}`).click();
-    $(`span=${month}`).click();
+  async setDate(year, month, arrowNext = false, day) {
+    await $(`span=${globals.getCurrentYear()}`).click();
+    await $(`span=${year}`).click();
+    await $(`span=${month}`).click();
     if (arrowNext === true) {
-      this.clickNextArrowDatePicker();
+      await this.clickNextArrowDatePicker();
     }
-    this.checkDay(day);
+    await this.checkDay(day);
   }
 
-  setEndDate(year, month, arrowNext, day) {
-    this.calendarEndDateButton.click();
-    this.setDate(year, month, arrowNext, day);
+  async setEndDate(year, month, arrowNext, day) {
+    await this.calendarEndDateButton.click();
+    await this.setDate(year, month, arrowNext, day);
   }
 
-  setStartDate(year, month, arrowNext, day) {
-    this.calendarStartDateButton.click();
-    this.setDate(year, month, arrowNext, day);
+  async setStartDate(year, month, arrowNext, day) {
+    await this.calendarStartDateButton.click();
+    await this.setDate(year, month, arrowNext, day);
   }
 
-  setTimeZone(timeZone) {
-    this.timeZoneDropdown.waitForClickable();
-    this.timeZoneDropdown.click();
-    $(`span=${timeZone}`).click();
+  async setTimeZone(timeZone) {
+    await this.timeZoneDropdown.waitForClickable();
+    await this.timeZoneDropdown.click();
+    await $(`span=${timeZone}`).click();
   }
 
-  getInvitationDate() {
-    this.invitationDate.waitForDisplayed();
+  async getInvitationDate() {
+    await this.invitationDate.waitForDisplayed();
     return this.invitationDate.getText();
   }
 
-  getFirstReminderDate() {
-    if (!this.firstReminderDate.isDisplayed()) {
-      this.firstReminderDate.waitForDisplayed();
-    }
+  async getFirstReminderDate() {
+    await this.firstReminderDate.waitForDisplayed();
     return this.firstReminderDate.getText().replace('and', '');
   }
 
-  getSecondReminderDate() {
+  async getSecondReminderDate() {
     return this.secondReminderDate.getText();
   }
 
-  getEndDate() {
+  async getEndDate() {
     return this.endDate.getValue();
   }
 
-  clickNextArrowDatePicker() {
+  async clickNextArrowDatePicker() {
     return this.nextArrowDatePicker.click();
   }
 
-  clickInvitationButton() {
-    return this.invitationButton.click();
+  async clickInvitationButton() {
+    await this.invitationButton.click();
   }
 
-  clickPreviewButton() {
-    return this.previewButton.click();
+  async clickPreviewButton() {
+    await this.previewButton.click();
   }
 
-  checkInvitation(senderName, emailSubject, bodyMessage, bodyMessageFooter) {
-    expect(this.invitationEmailSenderName.getValue()).to.equal(senderName);
-    expect(this.invitationEmailSubject.getValue()).to.equal(emailSubject);
-    expect(this.invitationEmailBodyMessage.getValue().replace(/\n/g, '')).to.contain(bodyMessage);
-    expect(this.invitationEmailBodyMessageFooter.getValue()).to.equal(bodyMessageFooter);
+  async checkInvitation(senderName, emailSubject, bodyMessage, bodyMessageFooter) {
+    expect(await this.invitationEmailSenderName.getValue()).to.equal(senderName);
+    expect(await this.invitationEmailSubject.getValue()).to.equal(emailSubject);
+    expect(await this.invitationEmailBodyMessage.getValue().replace(/\n/g, '')).to.contain(bodyMessage);
+    expect(await this.invitationEmailBodyMessageFooter.getValue()).to.equal(bodyMessageFooter);
   }
 
-  checkPreview(preview) {
-    expect(this.previewInfo.getText()).to.equal(preview);
+  async checkPreview(preview) {
+    expect(await this.previewInfo.getText()).to.equal(preview);
   }
 }
 

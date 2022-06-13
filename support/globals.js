@@ -7,6 +7,7 @@ const xlsx = require('xlsx');
 const identityConfig = require('../commons/identity');
 const authorization = require('../commons/authorization');
 const httpLogin = require('../stepDefinitions/API/login');
+const { deleteFiles } = require('../commons/action');
 
 class Globals {
   /**
@@ -65,6 +66,16 @@ class Globals {
     authorization.setToken('clientToken', await clientLogin.token);
     const userLogin = await httpLogin.login(decodedUser);
     authorization.setToken('userToken', await userLogin.token);
+  }
+
+  /**
+  * Deleting all necessary files
+  */
+  async deleteAllNecessaryFiles() {
+    await deleteFiles('./reports/UI/allure-results');
+    // await deleteFiles('./visualRegressionBaseLine/desktop_chrome');
+    await deleteFiles('./tmp/diff/desktop_chrome');
+    await deleteFiles('./tmp/actual/desktop_chrome');
   }
 
   /**
