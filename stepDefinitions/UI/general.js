@@ -2,7 +2,7 @@ const { Then, Given, When } = require('@cucumber/cucumber');
 const { expect } = require('chai');
 const authorize = require('../../commons/authorization');
 const { resolutions } = require('../../commons/enums');
-const { httpConfig } = require('../../commons/httpConfig');
+const { baseUrl } = require('../../commons/environment').getEnvironment()
 const visual = require('../../commons/visual');
 
 Then('I expect that url contain {string}', async function (url) {
@@ -10,7 +10,7 @@ Then('I expect that url contain {string}', async function (url) {
 });
 
 Then('I visit previously created survey with next url {string}', async function (url) {
-  await browser.url(`${httpConfig.baseUrl}/survey/${this.surveyId}/${url}`);
+  await browser.url(`${baseUrl}/survey/${this.surveyId}/${url}`);
 
   // await browser.debug();
 });

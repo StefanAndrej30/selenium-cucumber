@@ -20,4 +20,13 @@ const resolutions = {
   'HD': [1280, 720],
 };
 
-module.exports = { certificationSurveyTypes, surveyFlows, resolutions };
+const environments = {
+  'uat': 'qa01',
+  'qa': 'qa',
+  'prod': 'prod',
+  'dev': 'dev',
+  'development': 'dev01',
+  'ltd': 'ltd',
+};
+
+module.exports = { certificationSurveyTypes, surveyFlows, resolutions, environments };

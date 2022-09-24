@@ -2,8 +2,8 @@ const identityConfig = {
   user: {
     grant_type: 'password',
     scope: 'openid GptwClientLoginScope all_claims profile email',
-    username: 'nemanja.mircic+1133@htecgroup.com',
-    password: 'Nemanja123!',
+    username: 'teamqa.global+gptw@gmail.com',
+    password: 'Automation1.',
     client_id: 'GptwPortalCMP',
     client_secret: 'secret',
   },

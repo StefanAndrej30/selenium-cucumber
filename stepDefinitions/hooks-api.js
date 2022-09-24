@@ -3,10 +3,8 @@
 const {
   Status, BeforeAll, AfterStep, AfterAll, Before, After,
 } = require('@cucumber/cucumber');
-const { clearFile } = require('../commons/environment-setup');
-const {
-  takeScreenshot, deleteFiles, takeScreenshotForReporter, killPort, setDefaultHeaders,
-} = require('../commons/action');
+const { clearFile } = require('../commons/environment');
+const { setDefaultHeaders } = require('../commons/action');
 const { logTrace } = require('../commons/logs');
 const authorization = require('../commons/authorization');
 
@@ -16,7 +14,7 @@ const globals = require('../support/globals');
 // deleteFiles('logs/UI');
 // get all tokens, clear env file, delete files in screenshot folder
 BeforeAll(async function () {
-  await clearFile();
+  // await clearFile();
   await globals.getAllTokens();
 });
 
@@ -48,3 +46,7 @@ AfterStep(async function (scenario) {
     await logTrace(scenario.result);
   }
 });
+
+AfterAll(async function() {
+  await clearFile()
+})

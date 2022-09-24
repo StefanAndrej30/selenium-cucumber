@@ -2,10 +2,11 @@ const { Given } = require('@cucumber/cucumber');
 const superagent = require('superagent');
 require('superagent-retry-delay')(superagent);
 const supertest = require('supertest');
-const { httpConfig } = require('../../../commons/httpConfig');
+const { emprisingBaseUrl } = require('../../../commons/environment').getEnvironment()
 require('../../../support/world');
 
-const request = supertest(httpConfig.emprisingBaseUrl);
+
+const request = supertest(emprisingBaseUrl);
 const globals = require('../../../support/globals');
 const authorize = require('../../../commons/authorization');
 

@@ -1,15 +1,15 @@
 const { Then } = require('@cucumber/cucumber');
 
 const supertest = require('supertest');
-const { httpConfig } = require('../../../commons/httpConfig');
+const { emprisingBaseUrl } = require('../../../commons/environment').getEnvironment()
 
-const request = supertest(httpConfig.emprisingBaseUrl);
+const request = supertest(emprisingBaseUrl);
 const authorize = require('../../../commons/authorization');
 
 Then('I post demographics from edf file |status code: {int}|', async function (statusCode) {
   const postBody = {
     'demographics':
-            this.edfColumns,
+      this.edfColumns,
     'skipLoader': true,
   };
   this.setResponse(await request

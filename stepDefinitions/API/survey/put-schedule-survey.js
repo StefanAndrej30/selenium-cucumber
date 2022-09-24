@@ -2,10 +2,10 @@ const { When } = require('@cucumber/cucumber');
 const supertest = require('supertest');
 const moment = require('moment');
 
-const { httpConfig } = require('../../../commons/httpConfig');
+const { emprisingBaseUrl } = require('../../../commons/environment').getEnvironment()
 require('../../../support/world');
 
-const request = supertest(httpConfig.emprisingBaseUrl);
+const request = supertest(emprisingBaseUrl);
 const authorize = require('../../../commons/authorization');
 
 let surveyId;

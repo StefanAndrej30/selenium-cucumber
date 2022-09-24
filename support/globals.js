@@ -7,7 +7,7 @@ const xlsx = require('xlsx');
 const identityConfig = require('../commons/identity');
 const authorization = require('../commons/authorization');
 const httpLogin = require('../stepDefinitions/API/login');
-const { deleteFiles } = require('../commons/action');
+// const { deleteFiles } = require('../commons/action');
 
 class Globals {
   /**
@@ -70,13 +70,14 @@ class Globals {
 
   /**
   * Deleting all necessary files
+  * @param {string} filePath - set file path
   */
-  async deleteAllNecessaryFiles() {
-    await deleteFiles('./reports/UI/allure-results');
-    // await deleteFiles('./visualRegressionBaseLine/desktop_chrome');
-    await deleteFiles('./tmp/diff/desktop_chrome');
-    await deleteFiles('./tmp/actual/desktop_chrome');
-  }
+  //  deleteAllNecessaryFiles() {
+  //    deleteFiles('./reports/UI/allure-results');
+  //   // await deleteFiles('./visualRegressionBaseLine/desktop_chrome');
+  //    deleteFiles('./tmp/diff/desktop_chrome');
+  //   deleteFiles('./tmp/actual/desktop_chrome');
+  // }
 
   /**
   * Get file size

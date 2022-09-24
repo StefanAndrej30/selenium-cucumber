@@ -4,11 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "API-REPORTER": "node_modules/.bin/selenium-standalone start & node features/commons/httpConfig.js --env=$ENV | node_modules/.bin/cucumber-js --tags=$TAGS --format=json:report/cucumber_report.json -f @cucumber/pretty-formatter features/* || node index.js",
-    "API": "node commons/httpConfig.js --env=$ENV | node_modules/.bin/cucumber-js features/api/* --require stepDefinitions/ --format=json:reports/API/cucumber_report.json -f @cucumber/pretty-formatter",
-    "UI": "node commons/httpConfig.js --env=$ENV && DEBUG=true wdio ./wdio_confs/wdio.local.conf.js",
-    "UI-REMOTE": "node commons/httpConfig.js --env $ENV && wdio ${npm_config_conf} --cucumberOpts.retry 2",
-    "UI-VISUAL": "node commons/httpConfig.js --env $ENV && wdio ${npm_config_conf}",
+    "API-REPORTER": "node_modules/.bin/selenium-standalone start & node commons/environment.js --env=$ENV | node_modules/.bin/cucumber-js --tags=$TAGS --format=json:report/cucumber_report.json -f @cucumber/pretty-formatter features/* || node index.js",
+    "API": "node commons/environment.js --env=$ENV | node_modules/.bin/cucumber-js features/api/* --require stepDefinitions/ --format=json:reports/API/cucumber_report.json -f @cucumber/pretty-formatter",
+    "UI": "node commons/environment.js --env=$ENV && DEBUG=true wdio ./wdio_confs/wdio.local.conf.js",
+    "UI-REMOTE": "node commons/environment.js --env=$ENV && wdio ${npm_config_conf} --cucumberOpts.retry 2",
+    "UI-VISUAL": "node commons/environment.js --env=$ENV && wdio ${npm_config_conf}",
     "allure-report": "node_modules/.bin/allure generate --clean ./reports/UI/allure-results/ && node_modules/.bin/allure open"
   },
   "keywords": [],

@@ -4,10 +4,12 @@ const { expect } = require('chai');
 const authorize = require('../../../commons/authorization');
 const { downloadFile } = require('../../../commons/action');
 const globals = require('../../../support/globals');
-const { httpConfig } = require('../../../commons/httpConfig');
+const { emprisingBaseUrl } = require('../../../commons/environment').getEnvironment()
+const env = require('../../../commons/environment').getEnvPrefix()
+const { environments } = require('../../../commons/enums')
 
 Then('I download {string} file', async function (file) {
-  await downloadFile(httpConfig.emprisingBaseUrl, `/api/en-US/Project/${this.projectId}/Survey/${this.surveyId}/EDFTemplate/File?bearer_token=${authorize.getToken('userToken')}&h_gptw_client_id=${this.clientId}`, `../tmp/${file}`);
+  await downloadFile(emprisingBaseUrl, `/api/en-US/Project/${this.projectId}/Survey/${this.surveyId}/EDFTemplate/File?bearer_token=${authorize.getToken('userToken')}&h_gptw_client_id=${this.clientId}`, `../tmp/${file}`);
 });
 
 // Then('Check file {string} {string} {string}', async function (sheetName, cell, value) { // with scenario outline
@@ -34,5 +36,5 @@ Then('Check file {string}:', async function (file, docString) { // with json
 // });
 
 Then('I download single dems file', async function () {
-  await downloadFile('', 'https://qatranslations.blob.core.windows.net/templates/single-demographics-templates/Template_en-US.xlsx', '../tmp/Template_en-US.xlsx');
+  await downloadFile('', `https://${environments[env]}translations.blob.core.windows.net/templates/single-demographics-templates/Template_en-US.xlsx`, '../tmp/Template_en-US.xlsx');
 });

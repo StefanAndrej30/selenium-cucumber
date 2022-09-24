@@ -1,9 +1,10 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable global-require */
 const { argv } = require('yargs');
-const { clearFile } = require('../commons/environment-setup');
+const { clearFile } = require('../commons/environment');
 const visual = require('../commons/visual');
-
+const { killPort } = require('../commons/action');
+const { getAllTokens } = require('../support/globals');
 const defaultTimeoutInterval = process.env.DEBUG ? (60 * 60 * 500) : 120000;
 
 exports.config = {
@@ -234,10 +235,8 @@ exports.config = {
     global.wdioExpect = global.expect;
     const chai = require('chai');
     global.expect = chai.expect;
-    const { getAllTokens } = require('../support/globals');
-    const { deleteAllNecessaryFiles } = require('../support/globals');
     await getAllTokens();
-    await deleteAllNecessaryFiles();
+    // await deleteAllNecessaryFiles();
   },
 
   /**
@@ -299,9 +298,9 @@ exports.config = {
       * @param {number}             result.duration  duration of scenario in milliseconds
       * @param {Object}             context          Cucumber World object
       */
-  async afterStep(test, scenario, { error, duration, passed }) {
+   afterStep: async function (step, scenario, { error, duration, passed }, context) {
     if (error) {
-      browser.takeScreenshot();
+      await browser.takeScreenshot();
     }
   },
   /**
@@ -318,7 +317,6 @@ exports.config = {
     for (let i = 0; i < scenario.pickle.tags.length; i += 1) {
       if (scenario.pickle.tags[i].name === '@visual' && result.passed !== true) {
         await visual.createReporterWithDiffrences();
-        console.log(`MOJ_TEST:${result.passed}`);
       }
     }
   },
@@ -347,7 +345,8 @@ exports.config = {
       * @param {Array.<Object>} capabilities list of capabilities details
       * @param {Array.<String>} specs List of spec file paths that ran
       */
-  // after() {
+  // async after() {
+  //   // await killPort(4444)
   // },
   /**
       * Gets executed right after terminating the webdriver session.

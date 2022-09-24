@@ -6,6 +6,6 @@ RUN npm install phantomjs-prebuilt@2.1.16 -ignore-scripts
 RUN npm install
 COPY . .
 
-CMD ENV=qa npm run API -- --tags @api
+CMD ENV=uat npm run API -- --tags @api
 
 
