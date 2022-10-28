@@ -158,5 +158,29 @@ class Globals {
     await xlsx.utils.book_append_sheet(workbook, workSheetData, sheetName);
     await xlsx.writeFile(workbook, xlsxFile);
   }
+
+  async extractLink(mailBody, regex) {
+    const extractedLink = mailBody.match(regex);
+    return extractedLink;
+  }
+
+  // getValueByKey(object, objectKey, key, objValue) {
+  //   // headers.find((x) => x.name === 'From');
+  //   let value;
+  //   Object.keys(object).forEach((id) => {
+  //     if (object[id][objectKey] === key) {
+  //       value = object[id][objValue];
+  //     }
+  //   });
+  //   return value;
+  // }
+
+  getValueByKey(obj, targetValue) {
+    let desiredKey;
+    Object.keys(obj).forEach((key) => {
+      if (obj[key] === targetValue) desiredKey = key;
+    });
+    return desiredKey;
+  }
 }
 module.exports = new Globals();

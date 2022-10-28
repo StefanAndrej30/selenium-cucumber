@@ -29,4 +29,12 @@ const environments = {
   'ltd': 'ltd',
 };
 
-module.exports = { certificationSurveyTypes, surveyFlows, resolutions, environments };
+const gmailLabels = {
+  'HR': 'Label_1756329219334962465',
+  'ST': 'Label_8585600624153842353',
+  'INBOX': 'INBOX',
+};
+
+module.exports = {
+  certificationSurveyTypes, surveyFlows, resolutions, environments, gmailLabels,
+};

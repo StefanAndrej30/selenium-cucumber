@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const globals = require('../support/globals');
+const globals = require('../../../support/globals');
 
 class ThirdStepPage {
   get modalContentOk() { return $('.modal-content').$('button=OK'); }

@@ -1,7 +1,7 @@
 /* eslint-disable cucumber/async-then */
 const { When, Then } = require('@cucumber/cucumber');
 const { expect } = require('chai');
-const visual = require('../../commons/visual');
+const visual = require('../../../../commons/visual');
 
 // When('Save in screen mode {string} screenshot', function (screenShootName) {
 //   visual.setScreenshotName(screenShootName);

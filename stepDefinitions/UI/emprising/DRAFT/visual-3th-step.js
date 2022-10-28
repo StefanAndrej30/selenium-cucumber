@@ -1,8 +1,8 @@
 /* eslint-disable cucumber/async-then */
 const { When, Then } = require('@cucumber/cucumber');
 const { expect } = require('chai');
-const visual = require('../../commons/visual');
-const thirdStepPage = require('../../page-object/third-step-page');
+const visual = require('../../../../commons/visual');
+const thirdStepPage = require('../../../../page-object/emprising/draft/third-step-page');
 
 When('I save take preview button on invitation modal {string} screenshot', async function (screenshotShootName) {
   await visual.setScreenshotName(screenshotShootName);

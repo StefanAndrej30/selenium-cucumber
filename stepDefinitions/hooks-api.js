@@ -6,7 +6,7 @@ const {
 const { clearFile } = require('../commons/environment');
 const { setDefaultHeaders } = require('../commons/action');
 const { logTrace } = require('../commons/logs');
-const authorization = require('../commons/authorization');
+const { getUserInfo, deleteAllMails } = require('../commons/gmail/gmail-api');
 
 // const browser = authorization.getBrowser();
 const globals = require('../support/globals');
@@ -41,12 +41,17 @@ Before(async function () {
 //   }
 // });
 
+Before({ tags: '@mail' }, async function () {
+  await getUserInfo();
+  await deleteAllMails('INBOX');
+});
+
 AfterStep(async function (scenario) {
   if (scenario.result.status === Status.FAILED) {
     await logTrace(scenario.result);
   }
 });
 
-AfterAll(async function() {
-  await clearFile()
-})
+AfterAll(async function () {
+  await clearFile();
+});

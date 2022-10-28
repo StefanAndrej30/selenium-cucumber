@@ -1,0 +1,216 @@
+[
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "api-testing;api-get-token",
+        "keyword": "Scenario",
+        "line": 5,
+        "name": "Api get token",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "I create new project with random name |status code: 201|",
+            "match": {
+              "location": "stepDefinitions/API/project/post-project.js:12"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 787000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 7,
+            "name": "I create a new \"YYY\" survey |status code: 201|",
+            "match": {
+              "location": "stepDefinitions/API/survey/post-survey.js:12"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 674000000
+            }
+          },
+          {
+            "arguments": [
+              {
+                "content": "{\n    \"SurveyFlow\": 1,\n    \"QCertify\": false,\n    \"QCountry\": false,\n    \"NumberOfInvites\": 30\n}",
+                "line": 9
+              }
+            ],
+            "keyword": "And ",
+            "line": 8,
+            "name": "I edit survey: |status code: 200|",
+            "match": {
+              "location": "stepDefinitions/API/survey/put-survey.js:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 631000000
+            }
+          },
+          {
+            "arguments": [
+              {
+                "content": "{\n    \"startDate\": null,\n    \"closeDate\": \"2035-04-16T18:00:00.000\",\n    \"isToday\": true\n}",
+                "line": 18
+              }
+            ],
+            "keyword": "And ",
+            "line": 17,
+            "name": "I schdedule survey: |status code: 200|",
+            "match": {
+              "location": "stepDefinitions/API/survey/put-schedule-survey.js:13"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 673000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 25,
+            "name": "I put draft state to be \"3\" |status code: 200|",
+            "match": {
+              "location": "stepDefinitions/API/survey/put-draft-state.js:9"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 559000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 26,
+            "name": "I upload file \"employee_file_template.xlsx\" |status code: 202|",
+            "match": {
+              "location": "stepDefinitions/API/userdata/post-upload.js:8"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 7452000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 27,
+            "name": "I put draft state to be \"4.2\" |status code: 200|",
+            "match": {
+              "location": "stepDefinitions/API/survey/put-draft-state.js:9"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 580000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 28,
+            "name": "I get columns from uplaoded file |status code: 200|",
+            "match": {
+              "location": "stepDefinitions/API/userdata/get-columns.js:9"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 593000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 29,
+            "name": "I post demographics from edf file |status code: 202|",
+            "match": {
+              "location": "stepDefinitions/API/userdata/post-file-demographics.js:9"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 696000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 30,
+            "name": "I put draft state to be \"4.4\" |status code: 200|",
+            "match": {
+              "location": "stepDefinitions/API/survey/put-draft-state.js:9"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 573000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 31,
+            "name": "I confirm edf file |status code: 202|",
+            "match": {
+              "location": "stepDefinitions/API/userdata/post-confirm.js:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3716000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 32,
+            "name": "I publish survey |status code: 200|",
+            "match": {
+              "location": "stepDefinitions/API/survey/post-publish.js:9"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1365000000
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@api",
+            "line": 1
+          },
+          {
+            "name": "@upload",
+            "line": 1
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "api-testing",
+    "line": 2,
+    "keyword": "Feature",
+    "name": "Api testing",
+    "tags": [
+      {
+        "name": "@api",
+        "line": 1
+      },
+      {
+        "name": "@upload",
+        "line": 1
+      }
+    ],
+    "uri": "features/api/upload.feature"
+  }
+]

@@ -1,6 +1,6 @@
 /* eslint-disable cucumber/async-then */
 const { When, Then } = require('@cucumber/cucumber');
-const thirdStepPage = require('../../page-object/third-step-page');
+const thirdStepPage = require('../../../../page-object/emprising/draft/third-step-page');
 
 When('I click on schedule and messaging modal', async function () {
   await thirdStepPage.clickScheduleAndMessagingModal();

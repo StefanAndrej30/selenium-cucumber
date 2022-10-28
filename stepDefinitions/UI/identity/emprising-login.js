@@ -1,11 +1,11 @@
 /* eslint-disable no-undef */
 /* eslint-disable new-cap */
 const { Given, When } = require('@cucumber/cucumber');
-const loginPage = require('../../page-object/emprising-login.page');
-const { baseUrl, oidc } = require('../../commons/environment').getEnvironment()
-const authorize = require('../../commons/authorization');
+const loginPage = require('../../../page-object/identity/emprising-login.page');
+const { baseUrl, oidc } = require('../../../commons/environment').getEnvironment();
+const authorize = require('../../../commons/authorization');
 
-const { setLocalStorage, setSessionStorage } = require('../../commons/action');
+const { setLocalStorage, setSessionStorage } = require('../../../commons/action');
 
 Given('I am on emprising page', async function () {
   await loginPage.open(baseUrl);

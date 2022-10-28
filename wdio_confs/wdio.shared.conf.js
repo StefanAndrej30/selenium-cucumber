@@ -272,9 +272,15 @@ exports.config = {
       * @param {ITestCaseHookParameter} world    world object containing information on pickle and test step
       * @param {Object}                 context  Cucumber World object
       */
-  async beforeScenario() {
+  async beforeScenario(scenario) {
+    const { deleteAllMails } = require('../commons/gmail/gmail-api')
     await browser.reloadSession();
     await browser.refresh();
+    for (let i = 0; i < scenario.pickle.tags.length; i += 1) {
+      if (scenario.pickle.tags[i].name === '@mail') {
+        await deleteAllMails('INBOX')
+      } 
+    }
     await browser.setWindowSize(1440, 900);
   },
   /**

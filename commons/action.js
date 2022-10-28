@@ -7,7 +7,7 @@ const { killPortProcess } = require('kill-port-process');
 const supertest = require('supertest');
 const globals = require('../support/globals');
 const authorize = require('./authorization');
-const { emprisingBaseUrl }  = require('../commons/environment').getEnvironment()
+const { emprisingBaseUrl } = require('./environment').getEnvironment();
 
 const request = supertest(emprisingBaseUrl);
 
@@ -25,13 +25,13 @@ async function takeScreenshot() {
 async function deleteFiles(folder) {
   const arr = [];
   const absolutePath = path.resolve(__dirname, `../${folder}`);
-  console.log(absolutePath)
-  fs.readdirSync(absolutePath).forEach(file => {
-    arr.push(file)
+  console.log(absolutePath);
+  fs.readdirSync(absolutePath).forEach((file) => {
+    arr.push(file);
   });
-  
-  if(arr.length > 0) {
-    fs.emptyDirSync(absolutePath)
+
+  if (arr.length > 0) {
+    fs.emptyDirSync(absolutePath);
   }
 }
 

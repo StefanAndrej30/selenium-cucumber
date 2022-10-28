@@ -61,3 +61,7 @@ Then('should compare previously saved tabbable screenshots with a baseline', asy
 Then('I wait {int}ms', async function (milliseconds) {
   await browser.pause(milliseconds);
 });
+
+Then('I visit previously recived setap password link', async function () {
+  await browser.url(`https://${this.setupPasswordLink}`);
+});
