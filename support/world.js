@@ -7,6 +7,7 @@ class CustomWorld extends World {
     this.name = null;
     this.response = {};
     this.sessionStorage;
+    this.messageId;
   }
 
   setName(name) {
@@ -15,6 +16,10 @@ class CustomWorld extends World {
 
   setResponse(res) {
     this.response = res;
+  }
+
+  setMessageId(messageId) {
+    this.messageId = messageId;
   }
 }
 

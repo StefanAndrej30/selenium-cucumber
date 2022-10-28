@@ -13,4 +13,28 @@ const surveyFlows = {
   'YYY': 28,
 };
 
-module.exports = { certificationSurveyTypes, surveyFlows };
+const resolutions = {
+  '4k': [3840, 2160],
+  '2k': [2560, 1440],
+  'FHD': [1920, 1080],
+  'HD': [1280, 720],
+};
+
+const environments = {
+  'uat': 'qa01',
+  'qa': 'qa',
+  'prod': 'prod',
+  'dev': 'dev',
+  'development': 'dev01',
+  'ltd': 'ltd',
+};
+
+const gmailLabels = {
+  'HR': 'Label_1756329219334962465',
+  'ST': 'Label_8585600624153842353',
+  'INBOX': 'INBOX',
+};
+
+module.exports = {
+  certificationSurveyTypes, surveyFlows, resolutions, environments, gmailLabels,
+};

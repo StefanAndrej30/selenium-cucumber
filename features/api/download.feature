@@ -1,4 +1,4 @@
-@api @test @download
+@api @download
 Feature: Api testing new test
     # API test
 

@@ -2,9 +2,9 @@
 const { Then } = require('@cucumber/cucumber');
 
 const supertest = require('supertest');
-const { httpConfig } = require('../../../commons/httpConfig');
+const { emprisingBaseUrl } = require('../../../commons/environment').getEnvironment()
 
-const request = supertest(httpConfig.emprisingBaseUrl);
+const request = supertest(emprisingBaseUrl);
 const authorize = require('../../../commons/authorization');
 
 Then('I confirm edf file |status code: {int}|', async function (statusCode) {

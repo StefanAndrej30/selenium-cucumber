@@ -1,7 +1,7 @@
 const supertest = require('supertest');
-const { httpConfig } = require('../../commons/httpConfig');
+const { loginBaseUrl } = require('../../commons/environment').getEnvironment()
 
-const request = supertest(httpConfig.loginBaseUrl);
+const request = supertest(loginBaseUrl);
 const { logTrace } = require('../../commons/logs');
 
 class HttpLogin {

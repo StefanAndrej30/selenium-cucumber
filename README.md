@@ -20,15 +20,21 @@ Selelenium webdriver with node.js and cucumber for automating UI test
   List of available environments:
   - ENV=dev
   - ENV=qa
-  - ENV=prod 
+  - ENV=prod
+  - ENV=uat
+  - ENV=development
+ 
 
   ## test scripts for runing specific tags and env
 ## UI
-ENV=qa npm run UI -- --tags=@tagName
+ENV=uat npm run UI -- --tags=@tagName
 ## API
-ENV=qa npm run API -- --tags @tagName
+ENV=uat npm run API -- --tags @tagName
 ## UI-REMOTE
-ENV=qa npm run UI-REMOTE --conf=wdio_confs/wdio.grid.conf.js -- --tags=@tagName
+ENV=uat npm run UI-REMOTE --conf=wdio_confs/wdio.grid.conf.js -- --tags=@tagName
+
+## UI-VISUAL
+ENV=uat npm run UI-VISUAL --conf=wdio_confs/wdio.visual.conf.js -- --tags=@visual
 
 - To run with cucumber html reporter
 ENV=env TAGS=@tagName npm run UI-Reporter and after test reporter will be generated automaticly

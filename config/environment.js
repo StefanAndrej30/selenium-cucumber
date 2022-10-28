@@ -1,0 +1,58 @@
+const env = {
+  dev: {
+    loginBaseUrl: 'https://dev-login.greatplacetowork.com/identity/connect/token',
+    emprisingBaseUrl: 'https://dev-cmpapi.greatplacetowork.com',
+    takerBaseUrl: 'https://dev-cmpsurvey.greatplacetowork.com',
+    baseUrl: 'https://dev-cmp.greatplacetowork.com/',
+    takerUrl: 'https://dev-cmpsurvey.greatplacetowork.com',
+    surveyFeedback: 'https://dev-my.greatplacetowork.com/surveyfeedback',
+    oidc: 'https://dev-login.greatplacetowork.com/identity:GptwCMP',
+  },
+  ltd: {
+    loginBaseUrl: 'https://dev-login.greatplacetowork.com/identity/connect/token',
+    emprisingBaseUrl: 'https://ltd-cmpapi.greatplacetowork.com',
+    takerBaseUrl: 'https://ltd-stapi.greatplacetowork.com',
+    baseUrl: 'https://ltd-cmp.greatplacetowork.com/',
+    takerUrl: 'https://ltd-surveytaker.greatplacetowork.com',
+    surveyFeedback: 'https://ltd-my.greatplacetowork.com/surveyfeedback',
+    oidc: 'https://dev-login.greatplacetowork.com/identity:GptwCMP',
+  },
+  qa: {
+    loginBaseUrl: 'https://qa-login.greatplacetowork.com/identity/connect/token',
+    emprisingBaseUrl: 'https://qa-cmpapi.greatplacetowork.com',
+    takerBaseUrl: 'https://qa-cmpsurvey.greatplacetowork.com',
+    baseUrl: 'https://qa-cmp.greatplacetowork.com/',
+    takerUrl: 'https://qa-cmpsurvey.greatplacetowork.com',
+    surveyFeedback: 'https://qa-my.greatplacetowork.com/surveyfeedback',
+    oidc: 'https://qa-login.greatplacetowork.com/identity:GptwCMP',
+  },
+  prod: {
+    loginBaseUrl: 'https://login.greatplacetowork.com/identity/connect/token',
+    emprisingBaseUrl: 'https://appapi.emprising.com',
+    takerBaseUrl: 'https://appsurveytakerapi.emprising.com/',
+    baseUrl: 'https://app.emprising.com',
+    takerUrl: 'https://appsurvey.emprising.com',
+    surveyFeedback: 'https://my.greatplacetowork.com/surveyfeedback',
+    oidc: 'https://login.greatplacetowork.com/identity:GptwCMP',
+  },
+  uat: {
+    loginBaseUrl: 'https://uat-login.greatplacetowork.com/identity/connect/token',
+    emprisingBaseUrl: 'https://uat-appapi.emprising.com',
+    takerBaseUrl: 'https://uat-appsurveytakerapi.emprising.com',
+    baseUrl: 'https://uat-app.emprising.com/',
+    takerUrl: 'https://uat-appsurvey.emprising.com',
+    surveyFeedback: 'https://uat-my.greatplacetowork.com/surveyfeedback',
+    oidc: 'https://uat-login.greatplacetowork.com/identity:GptwCMP',
+  },
+  development: {
+    loginBaseUrl: 'https://development-login.greatplacetowork.com/identity/connect/token',
+    emprisingBaseUrl: 'https://development-appapi.emprising.com',
+    takerBaseUrl: 'https://development-appsurveytakerapi.emprising.com/',
+    baseUrl: 'https://development-app.emprising.com',
+    takerUrl: 'https://development-appsurvey.emprising.com',
+    surveyFeedback: 'https://development-my.greatplacetowork.com/surveyfeedback',
+    oidc: 'https://development-login.greatplacetowork.com/identity:GptwCMP',
+  },
+};
+
+module.exports = env;

@@ -4,3 +4,5 @@ node_modules
 /commons/identity.js
 /reports
 /logs/API
+/tmp
+/commons/gmail
