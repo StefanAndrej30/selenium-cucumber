@@ -1,7 +1,6 @@
 @api @mail
 
 Feature: Test gmail-api
-    @getMail
     Scenario: check gmail api
         Given Check "userToken" token
         When I reset password for "884bf7e2-28f9-4bee-ad66-4f6c86746488" |status code: 200|
