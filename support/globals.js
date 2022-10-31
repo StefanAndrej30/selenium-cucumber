@@ -94,7 +94,7 @@ class Globals {
     const absolutePath = path.resolve(__dirname, filePath);
     const fileSize = await this.getFileSize(absolutePath);
     if (fileSize === 0) throw new Error('FILE IS EMPTY');
-    if (fileSize < 200) throw new Error(`${await this.readFile(absolutePath)}`);
+    if (fileSize < 250) throw new Error(`${await this.readFile(absolutePath)}`);
   }
 
   /**
