@@ -175,7 +175,7 @@ class Globals {
   //   return value;
   // }
 
-  getValueByKey(obj, targetValue) {
+  getKeyByValue(obj, targetValue) {
     let desiredKey;
     Object.keys(obj).forEach((key) => {
       if (obj[key] === targetValue) desiredKey = key;
