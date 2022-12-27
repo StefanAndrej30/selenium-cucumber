@@ -9,7 +9,8 @@
     "UI": "node commons/environment.js --env=$ENV && DEBUG=true wdio ./wdio_confs/wdio.local.conf.js",
     "UI-REMOTE": "node commons/environment.js --env=$ENV && wdio ${npm_config_conf} --cucumberOpts.retry 2",
     "UI-VISUAL": "node commons/environment.js --env=$ENV && wdio ${npm_config_conf}",
-    "allure-report": "node_modules/.bin/allure generate --clean ./reports/UI/allure-results/ && node_modules/.bin/allure open"
+    "allure-report": "node_modules/.bin/allure generate --clean ./reports/UI/allure-results/ && node_modules/.bin/allure open",
+    "kill-port": "kill -9 $(lsof -ti tcp:4444)"
   },
   "keywords": [],
   "author": "",
